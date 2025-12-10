@@ -5,6 +5,10 @@ import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Linkedin, Twitter } from 'lucide-react'
 
+import joelImage from '@/assets/joel-fulford.jpg'
+import bryanImage from '@/assets/bryan-aulds.jpg'
+import colinImage from '@/assets/colin-aulds.jpg'
+
 export function Team() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
@@ -15,7 +19,7 @@ export function Team() {
       role: "CEO",
       bio: "12 years in O&G with deep expertise in operations and business development. Joel brings strategic vision and industry connections to drive 10NetZero's growth.",
       credentials: ["Mechanical Engineering", "Rice University, MBA"],
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&auto=format",
+      image: joelImage,
       linkedin: "https://www.linkedin.com/in/joel-fulford-5838aa14b/"
     },
     {
@@ -23,7 +27,7 @@ export function Team() {
       role: "COO/CFO",
       bio: "11 years in Bitcoin with extensive military and commercial operations experience. Bryan oversees operations and financial strategy.",
       credentials: ["U.S. Naval Academy", "Rice University, MBA"],
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&auto=format",
+      image: bryanImage,
       linkedin: "https://www.linkedin.com/in/s-bryan-aulds-ii-32b955135/",
       twitter: "https://mobile.twitter.com/bryanaulds"
     },
@@ -32,7 +36,7 @@ export function Team() {
       role: "CTO",
       bio: "11 years in Bitcoin with expertise in hardware and software integration. Colin leads our technology development and implementation.",
       credentials: ["Belmont University", "Hardware & Software Integration"],
-      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop&auto=format",
+      image: colinImage,
       linkedin: "https://www.linkedin.com/in/colin-aulds-a7834b103/",
       twitter: "https://twitter.com/colin_aulds"
     }
