@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion'
 import { Menu, X, Flame } from 'lucide-react'
 import { useState, useEffect } from 'react'
-import { EnergyFlowBackground } from './EnergyFlowBackground'
 
 export function Hero() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -29,17 +28,21 @@ export function Hero() {
   }, [isMobileMenuOpen])
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
-      {/* Animated Energy Flow Background */}
-      <EnergyFlowBackground />
+    <div className="relative min-h-screen w-full overflow-hidden bg-gray-900">
+      {/* Video Background */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="/videos/hero-background.mp4" type="video/mp4" />
+      </video>
 
       {/* Gradient Overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-900/40 via-gray-900/60 to-gray-900" />
-      <div className="absolute inset-0 bg-gradient-to-r from-gray-900/70 via-transparent to-transparent" />
-
-      {/* Subtle accent glows */}
-      <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-1/4 w-64 h-64 bg-accent-blue/10 rounded-full blur-2xl pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-900/60 via-gray-900/40 to-gray-900/80" />
+      <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 via-transparent to-transparent" />
 
       {/* Full-Width Navbar */}
       <motion.nav
