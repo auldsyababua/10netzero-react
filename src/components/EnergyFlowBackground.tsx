@@ -1,244 +1,213 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { motion } from 'framer-motion'
 
-interface Node {
-  x: number
-  y: number
-  radius: number
-  pulsePhase: number
+// Generate curved pipe paths
+const generatePipePaths = () => {
+  const paths = [
+    // Main flowing pipes - curved paths across the screen
+    "M-100,150 Q200,100 400,200 T800,150 T1200,250 T1600,180 T2000,220",
+    "M-50,350 Q150,280 350,380 T750,320 T1150,400 T1550,340 T1950,380",
+    "M-100,550 Q250,480 450,580 T850,520 T1250,600 T1650,540 T2050,580",
+    "M-80,750 Q200,680 400,780 T800,720 T1200,800 T1600,740 T2000,780",
+    // Cross-connecting pipes
+    "M200,0 Q250,200 180,400 T280,600 T200,900",
+    "M600,0 Q650,180 580,360 T680,540 T600,900",
+    "M1000,0 Q1050,200 980,400 T1080,600 T1000,900",
+    "M1400,0 Q1450,180 1380,360 T1480,540 T1400,900",
+  ]
+  return paths
 }
 
-interface FlowParticle {
-  progress: number
-  speed: number
-  fromNode: number
-  toNode: number
+const pipes = generatePipePaths()
+
+// Colors matching brand
+const pipeColors = [
+  '#ea580c', // Orange (primary)
+  '#0284c7', // Blue (accent)
+  '#22c55e', // Green (secondary)
+  '#ea580c',
+  '#0284c7',
+  '#22c55e',
+  '#ea580c',
+  '#0284c7',
+]
+
+// Data packet component that flows along a path
+const DataPacket = ({ 
+  pathId, 
+  delay, 
+  duration, 
+  color,
+  size = 8 
+}: { 
+  pathId: string
+  delay: number
+  duration: number
   color: string
-  size: number
+  size?: number
+}) => {
+  return (
+    <motion.circle
+      r={size}
+      fill={color}
+      filter="url(#glow)"
+      initial={{ offsetDistance: '0%' }}
+      animate={{ offsetDistance: '100%' }}
+      transition={{
+        duration,
+        delay,
+        repeat: Infinity,
+        ease: 'linear',
+      }}
+      style={{
+        offsetPath: `path("${pathId}")`,
+      }}
+    />
+  )
 }
 
 export function EnergyFlowBackground() {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-  const animationRef = useRef<number>()
-
-  useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-
-    const ctx = canvas.getContext('2d')
-    if (!ctx) return
-
-    // Brand colors
-    const primaryColor = '#ea580c' // Orange
-    const accentColor = '#0284c7' // Blue
-    const secondaryColor = '#22c55e' // Green
-
-    let width = window.innerWidth
-    let height = window.innerHeight
-
-    const resize = () => {
-      width = window.innerWidth
-      height = window.innerHeight
-      canvas.width = width
-      canvas.height = height
-      initializeNetwork()
-    }
-
-    let nodes: Node[] = []
-    let connections: [number, number][] = []
-    let flowParticles: FlowParticle[] = []
-
-    const initializeNetwork = () => {
-      // Create network nodes - more nodes for better coverage
-      const nodeCount = Math.max(15, Math.floor((width * height) / 50000))
-      nodes = []
-      
-      // Create nodes in a more distributed pattern
-      for (let i = 0; i < nodeCount; i++) {
-        nodes.push({
-          x: Math.random() * width * 0.9 + width * 0.05,
-          y: Math.random() * height * 0.85 + height * 0.075,
-          radius: Math.random() * 4 + 3,
-          pulsePhase: Math.random() * Math.PI * 2,
-        })
-      }
-
-      // Create connections between nodes - connect more liberally
-      connections = []
-      for (let i = 0; i < nodes.length; i++) {
-        for (let j = i + 1; j < nodes.length; j++) {
-          const dist = Math.hypot(nodes[i].x - nodes[j].x, nodes[i].y - nodes[j].y)
-          // Connect nodes within reasonable distance
-          if (dist < Math.min(400, width / 3)) {
-            connections.push([i, j])
-          }
-        }
-      }
-
-      // Create flow particles - multiple per connection for busy effect
-      flowParticles = []
-      const colors = [primaryColor, accentColor, secondaryColor]
-      
-      connections.forEach(([from, to]) => {
-        // Add 2-4 particles per connection
-        const particleCount = Math.floor(Math.random() * 3) + 2
-        for (let p = 0; p < particleCount; p++) {
-          flowParticles.push({
-            progress: Math.random(),
-            speed: Math.random() * 0.008 + 0.003,
-            fromNode: from,
-            toNode: to,
-            color: colors[Math.floor(Math.random() * colors.length)],
-            size: Math.random() * 3 + 2,
-          })
-        }
-      })
-    }
-
-    resize()
-    window.addEventListener('resize', resize)
-
-    let time = 0
-
-    const animate = () => {
-      ctx.clearRect(0, 0, width, height)
-      time += 0.01
-
-      // Draw connections with gradient - more visible
-      connections.forEach(([i, j]) => {
-        const n1 = nodes[i]
-        const n2 = nodes[j]
-        
-        const gradient = ctx.createLinearGradient(n1.x, n1.y, n2.x, n2.y)
-        gradient.addColorStop(0, `${primaryColor}30`)
-        gradient.addColorStop(0.5, `${accentColor}40`)
-        gradient.addColorStop(1, `${primaryColor}30`)
-        
-        ctx.beginPath()
-        ctx.moveTo(n1.x, n1.y)
-        ctx.lineTo(n2.x, n2.y)
-        ctx.strokeStyle = gradient
-        ctx.lineWidth = 1.5
-        ctx.stroke()
-      })
-
-      // Draw and animate nodes with glow
-      nodes.forEach((node) => {
-        const pulse = Math.sin(time * 2 + node.pulsePhase) * 0.5 + 0.5
-        const glowRadius = node.radius + pulse * 15
-        
-        // Outer glow
-        const glow = ctx.createRadialGradient(
-          node.x, node.y, 0,
-          node.x, node.y, glowRadius
-        )
-        glow.addColorStop(0, `${primaryColor}60`)
-        glow.addColorStop(0.4, `${primaryColor}30`)
-        glow.addColorStop(1, 'transparent')
-        
-        ctx.beginPath()
-        ctx.arc(node.x, node.y, glowRadius, 0, Math.PI * 2)
-        ctx.fillStyle = glow
-        ctx.fill()
-
-        // Core node
-        ctx.beginPath()
-        ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2)
-        ctx.fillStyle = primaryColor
-        ctx.fill()
-        
-        // Bright center
-        ctx.beginPath()
-        ctx.arc(node.x, node.y, node.radius * 0.5, 0, Math.PI * 2)
-        ctx.fillStyle = '#ffffff'
-        ctx.fill()
-      })
-
-      // Animate flow particles along connections - the main effect
-      flowParticles.forEach((fp) => {
-        fp.progress += fp.speed
-        if (fp.progress > 1) {
-          fp.progress = 0
-          // Occasionally reverse direction
-          if (Math.random() > 0.7) {
-            const temp = fp.fromNode
-            fp.fromNode = fp.toNode
-            fp.toNode = temp
-          }
-        }
-
-        const n1 = nodes[fp.fromNode]
-        const n2 = nodes[fp.toNode]
-        if (!n1 || !n2) return
-        
-        const x = n1.x + (n2.x - n1.x) * fp.progress
-        const y = n1.y + (n2.y - n1.y) * fp.progress
-
-        // Trail effect
-        const trailLength = 5
-        for (let t = 0; t < trailLength; t++) {
-          const trailProgress = fp.progress - (t * 0.02)
-          if (trailProgress < 0) continue
-          
-          const tx = n1.x + (n2.x - n1.x) * trailProgress
-          const ty = n1.y + (n2.y - n1.y) * trailProgress
-          const trailOpacity = 1 - (t / trailLength)
-          
-          ctx.beginPath()
-          ctx.arc(tx, ty, fp.size * trailOpacity * 0.5, 0, Math.PI * 2)
-          ctx.fillStyle = fp.color.replace(')', `, ${trailOpacity * 0.5})`).replace('rgb', 'rgba')
-          
-          // Convert hex to rgba for trail
-          const r = parseInt(fp.color.slice(1, 3), 16)
-          const g = parseInt(fp.color.slice(3, 5), 16)
-          const b = parseInt(fp.color.slice(5, 7), 16)
-          ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${trailOpacity * 0.4})`
-          ctx.fill()
-        }
-
-        // Main particle with glow
-        const particleGlow = ctx.createRadialGradient(x, y, 0, x, y, fp.size * 4)
-        particleGlow.addColorStop(0, `${fp.color}90`)
-        particleGlow.addColorStop(0.4, `${fp.color}40`)
-        particleGlow.addColorStop(1, 'transparent')
-
-        ctx.beginPath()
-        ctx.arc(x, y, fp.size * 4, 0, Math.PI * 2)
-        ctx.fillStyle = particleGlow
-        ctx.fill()
-
-        // Bright core
-        ctx.beginPath()
-        ctx.arc(x, y, fp.size, 0, Math.PI * 2)
-        ctx.fillStyle = fp.color
-        ctx.fill()
-        
-        // White center
-        ctx.beginPath()
-        ctx.arc(x, y, fp.size * 0.4, 0, Math.PI * 2)
-        ctx.fillStyle = '#ffffff'
-        ctx.fill()
-      })
-
-      animationRef.current = requestAnimationFrame(animate)
-    }
-
-    animate()
-
-    return () => {
-      window.removeEventListener('resize', resize)
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current)
-      }
-    }
-  }, [])
-
   return (
-    <canvas
-      ref={canvasRef}
-      className="absolute inset-0 w-full h-full"
-      style={{ opacity: 0.85 }}
-    />
+    <div className="absolute inset-0 w-full h-full overflow-hidden">
+      <svg
+        className="w-full h-full"
+        viewBox="0 0 1920 1080"
+        preserveAspectRatio="xMidYMid slice"
+        style={{ opacity: 0.85 }}
+      >
+        <defs>
+          {/* Glow filter for packets */}
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="4" result="coloredBlur" />
+            <feMerge>
+              <feMergeNode in="coloredBlur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+          
+          {/* Stronger glow for larger packets */}
+          <filter id="glowStrong" x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur stdDeviation="8" result="coloredBlur" />
+            <feMerge>
+              <feMergeNode in="coloredBlur" />
+              <feMergeNode in="coloredBlur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+
+          {/* Gradient for pipe lines */}
+          <linearGradient id="pipeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#ea580c" stopOpacity="0.3" />
+            <stop offset="50%" stopColor="#0284c7" stopOpacity="0.4" />
+            <stop offset="100%" stopColor="#22c55e" stopOpacity="0.3" />
+          </linearGradient>
+        </defs>
+
+        {/* Draw the pipe paths */}
+        {pipes.map((path, index) => (
+          <g key={index}>
+            {/* Pipe background glow */}
+            <motion.path
+              d={path}
+              fill="none"
+              stroke={pipeColors[index]}
+              strokeWidth="3"
+              strokeOpacity="0.15"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 2, delay: index * 0.2 }}
+            />
+            
+            {/* Main pipe line */}
+            <motion.path
+              d={path}
+              fill="none"
+              stroke={pipeColors[index]}
+              strokeWidth="1.5"
+              strokeOpacity="0.4"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 2, delay: index * 0.2 }}
+            />
+          </g>
+        ))}
+
+        {/* Data packets flowing along pipes */}
+        {pipes.map((path, pipeIndex) => (
+          <g key={`packets-${pipeIndex}`}>
+            {/* Multiple packets per pipe with different timings */}
+            {[0, 1, 2, 3].map((packetIndex) => (
+              <DataPacket
+                key={`${pipeIndex}-${packetIndex}`}
+                pathId={path}
+                delay={packetIndex * 2.5 + pipeIndex * 0.3}
+                duration={8 + Math.random() * 4}
+                color={pipeColors[pipeIndex]}
+                size={6 + Math.random() * 4}
+              />
+            ))}
+          </g>
+        ))}
+
+        {/* Junction nodes where pipes intersect */}
+        {[
+          { x: 200, y: 200 },
+          { x: 600, y: 350 },
+          { x: 1000, y: 250 },
+          { x: 1400, y: 400 },
+          { x: 400, y: 550 },
+          { x: 800, y: 480 },
+          { x: 1200, y: 580 },
+          { x: 1600, y: 520 },
+        ].map((node, index) => (
+          <g key={`node-${index}`}>
+            {/* Node glow */}
+            <motion.circle
+              cx={node.x}
+              cy={node.y}
+              r="20"
+              fill={pipeColors[index % pipeColors.length]}
+              opacity="0.2"
+              animate={{
+                r: [18, 25, 18],
+                opacity: [0.15, 0.3, 0.15],
+              }}
+              transition={{
+                duration: 2,
+                delay: index * 0.3,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+            />
+            {/* Node core */}
+            <motion.circle
+              cx={node.x}
+              cy={node.y}
+              r="6"
+              fill={pipeColors[index % pipeColors.length]}
+              filter="url(#glow)"
+              animate={{
+                r: [5, 7, 5],
+              }}
+              transition={{
+                duration: 1.5,
+                delay: index * 0.2,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+            />
+            {/* Node bright center */}
+            <circle
+              cx={node.x}
+              cy={node.y}
+              r="2"
+              fill="white"
+              opacity="0.8"
+            />
+          </g>
+        ))}
+      </svg>
+    </div>
   )
 }
