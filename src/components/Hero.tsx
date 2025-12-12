@@ -1,9 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Menu, X, Flame } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { useState, useEffect } from 'react'
-
+import logo from '@/assets/10netzero-logo.png'
 export function Hero() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -41,8 +41,9 @@ export function Hero() {
       </video>
 
       {/* Gradient Overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-900/60 via-gray-900/40 to-gray-900/80" />
-      <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gray-900/50" />
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-900/70 via-gray-900/50 to-gray-900/90" />
+      <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 via-gray-900/30 to-transparent" />
 
       {/* Full-Width Navbar */}
       <motion.nav
@@ -65,8 +66,7 @@ export function Hero() {
               className="flex items-center cursor-pointer"
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
-              <Flame className="w-8 h-8 text-primary mr-2" />
-              <span className="font-display text-white text-xl font-bold tracking-tight">10NetZero</span>
+              <img src={logo} alt="10NetZero" className="h-10 w-auto" />
             </motion.div>
 
             {/* Navigation Menu */}
