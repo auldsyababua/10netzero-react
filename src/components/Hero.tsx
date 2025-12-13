@@ -53,7 +53,7 @@ export function Hero() {
         className="fixed top-0 left-0 right-0 w-full z-[110]"
       >
         <div 
-          className={`w-full px-6 sm:px-8 lg:px-12 py-4 transition-all duration-300 ease-out ${
+          className={`w-full px-6 sm:px-8 lg:px-12 py-2 transition-all duration-300 ease-out ${
             isScrolled 
               ? 'bg-gray-900/95 backdrop-blur-xl border-b border-white/10' 
               : 'bg-transparent'
@@ -66,7 +66,7 @@ export function Hero() {
               className="flex items-center cursor-pointer"
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
-              <img src={logo} alt="10NetZero" className="h-40 w-auto" />
+              <img src={logo} alt="10NetZero" className="h-20 md:h-24 w-auto" />
             </motion.div>
 
             {/* Navigation Menu */}

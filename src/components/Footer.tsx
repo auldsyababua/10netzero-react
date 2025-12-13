@@ -1,6 +1,7 @@
 'use client'
 
-import { Flame, Linkedin, Twitter } from 'lucide-react'
+import { Linkedin, Twitter } from 'lucide-react'
+import logo from '@/assets/10netzero-logo.png'
 
 export function Footer() {
   const navigation = [
@@ -18,8 +19,7 @@ export function Footer() {
           {/* Logo and Description */}
           <div className="md:col-span-5">
             <div className="flex items-center mb-6">
-              <Flame className="w-8 h-8 text-primary mr-2" />
-              <span className="font-display text-2xl font-bold">10NetZero</span>
+              <img src={logo} alt="10NetZero" className="h-16 w-auto" />
             </div>
             <p className="text-gray-400 leading-relaxed mb-6 max-w-md">
               Helping O&G firms monetize their stranded natural gas while meeting ESG goals. 
