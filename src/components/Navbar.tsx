@@ -96,9 +96,9 @@ export function Navbar() {
                 }`}>
                   Services <ChevronDown className="w-4 h-4" />
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="bg-gray-900 border-white/10 min-w-[200px]">
+                <DropdownMenuContent className="bg-gray-900 border border-gray-700 min-w-[200px] shadow-xl">
                   {serviceLinks.map((link) => (
-                    <DropdownMenuItem key={link.href} asChild>
+                    <DropdownMenuItem key={link.href} asChild className="focus:bg-gray-800 hover:bg-gray-800">
                       <Link 
                         to={link.href}
                         className={`w-full cursor-pointer ${
