@@ -66,7 +66,7 @@ export function Hero() {
               className="flex items-center cursor-pointer"
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
-              <img src={logo} alt="10NetZero" className="h-10 w-auto" />
+              <img src={logo} alt="10NetZero" className="h-16 w-auto" />
             </motion.div>
 
             {/* Navigation Menu */}
