@@ -2,14 +2,79 @@
 
 import { motion } from 'framer-motion'
 import { Navbar } from '@/components/Navbar'
+import { useRef, useEffect, useState } from 'react'
 
 export function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [isReversing, setIsReversing] = useState(false)
+  const animationFrameRef = useRef<number>()
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    // Set playback speed to 25%
+    video.playbackRate = 0.25
+
+    const handleTimeUpdate = () => {
+      if (!video) return
+      
+      // When playing forward and reaching the end
+      if (!isReversing && video.currentTime >= video.duration - 0.1) {
+        video.pause()
+        setIsReversing(true)
+      }
+    }
+
+    video.addEventListener('timeupdate', handleTimeUpdate)
+
+    return () => {
+      video.removeEventListener('timeupdate', handleTimeUpdate)
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current)
+      }
+    }
+  }, [isReversing])
+
+  // Handle reverse playback manually
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video || !isReversing) return
+
+    let lastTime = performance.now()
+    
+    const reversePlay = (currentTime: number) => {
+      const deltaTime = (currentTime - lastTime) / 1000 // Convert to seconds
+      lastTime = currentTime
+      
+      // Move backwards at 25% speed
+      video.currentTime = Math.max(0, video.currentTime - deltaTime * 0.25)
+      
+      if (video.currentTime <= 0.1) {
+        // Reached the beginning, switch back to forward
+        video.currentTime = 0
+        setIsReversing(false)
+        video.play()
+      } else {
+        animationFrameRef.current = requestAnimationFrame(reversePlay)
+      }
+    }
+
+    animationFrameRef.current = requestAnimationFrame(reversePlay)
+
+    return () => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current)
+      }
+    }
+  }, [isReversing])
+
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-gray-900">
       {/* Video Background */}
       <video
+        ref={videoRef}
         autoPlay
-        loop
         muted
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
