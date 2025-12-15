@@ -14,7 +14,7 @@ export function Hero() {
     if (!video) return
 
     // Set playback speed to 25%
-    video.playbackRate = 0.25
+    video.playbackRate = 0.75
 
     const handleTimeUpdate = () => {
       if (!video) return
@@ -48,7 +48,7 @@ export function Hero() {
       lastTime = currentTime
       
       // Move backwards at 25% speed
-      video.currentTime = Math.max(0, video.currentTime - deltaTime * 0.25)
+      video.currentTime = Math.max(0, video.currentTime - deltaTime * 0.75)
       
       if (video.currentTime <= 0.1) {
         // Reached the beginning, switch back to forward
