@@ -7,60 +7,60 @@
 
 :root {
   --font-size: 16px;
-  --background: #ffffff;
-  --foreground: #1a1a1a;
-  --card: #f8fafc;
-  --card-foreground: #1a1a1a;
-  --popover: #ffffff;
-  --popover-foreground: #1a1a1a;
-  --primary: #ea580c;
-  --primary-foreground: #ffffff;
-  --secondary: #f1f5f9;
-  --secondary-foreground: #1a1a1a;
-  --muted: #f1f5f9;
-  --muted-foreground: #64748b;
-  --accent: #fff7ed;
-  --accent-foreground: #ea580c;
-  --destructive: #ef4444;
-  --destructive-foreground: #ffffff;
-  --border: #e2e8f0;
-  --input: #f1f5f9;
-  --input-background: #ffffff;
-  --switch-background: #e2e8f0;
+  --background: 0 0% 100%;
+  --foreground: 0 0% 10%;
+  --card: 210 40% 98%;
+  --card-foreground: 0 0% 10%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 10%;
+  --primary: 24 90% 49%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 0 0% 10%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215 16% 47%;
+  --accent: 33 100% 96%;
+  --accent-foreground: 24 90% 49%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 214 32% 91%;
+  --input: 210 40% 96%;
+  --input-background: 0 0% 100%;
+  --switch-background: 214 32% 91%;
   --font-weight-medium: 500;
   --font-weight-normal: 400;
-  --ring: #ea580c;
-  
+  --ring: 24 90% 49%;
+
   /* 10NetZero Brand Colors */
-  --accent-orange: #ea580c;
-  --accent-green: #16a34a;
-  --accent-blue: #0284c7;
-  --accent-emerald: #059669;
-  --accent-purple: #7c3aed;
-  
+  --accent-orange: 24 90% 49%;
+  --accent-green: 142 72% 35%;
+  --accent-blue: 200 98% 39%;
+  --accent-emerald: 168 96% 30%;
+  --accent-purple: 262 83% 58%;
+
   --radius: 0.75rem;
 }
 
 .dark {
-  --background: #0f0f0f;
-  --foreground: #f8fafc;
-  --card: #1a1a1a;
-  --card-foreground: #f8fafc;
-  --popover: #1a1a1a;
-  --popover-foreground: #f8fafc;
-  --primary: #ea580c;
-  --primary-foreground: #ffffff;
-  --secondary: #262626;
-  --secondary-foreground: #f8fafc;
-  --muted: #262626;
-  --muted-foreground: #94a3b8;
-  --accent: #292524;
-  --accent-foreground: #fb923c;
-  --destructive: #ef4444;
-  --destructive-foreground: #f8fafc;
-  --border: #333333;
-  --input: #262626;
-  --ring: #ea580c;
+  --background: 0 0% 6%;
+  --foreground: 210 40% 98%;
+  --card: 0 0% 10%;
+  --card-foreground: 210 40% 98%;
+  --popover: 0 0% 10%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 24 90% 49%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 0% 15%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 0 0% 15%;
+  --muted-foreground: 215 20% 65%;
+  --accent: 24 10% 15%;
+  --accent-foreground: 27 96% 61%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 0 0% 20%;
+  --input: 0 0% 15%;
+  --ring: 24 90% 49%;
 }
 
 @theme inline {
