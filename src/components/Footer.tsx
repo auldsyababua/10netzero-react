@@ -22,8 +22,7 @@ export function Footer() {
               <img src={logo} alt="10NetZero" className="h-16 w-auto" />
             </div>
             <p className="text-gray-400 leading-relaxed mb-6 max-w-md">
-              Helping O&G firms monetize their stranded natural gas while meeting ESG goals. 
-              Zero waste, net zero emissions.
+              Digital Midstream solutions for Texas operators. We bring the infrastructure to your wellhead so you can turn stranded gas into revenue.
             </p>
             
             {/* Social Links */}
@@ -69,10 +68,10 @@ export function Footer() {
             <h4 className="font-display font-bold text-lg mb-6">Our Solutions</h4>
             <ul className="space-y-3">
               <li className="text-gray-400">Gas-to-Power Generation</li>
-              <li className="text-gray-400">Bitcoin Mining Solutions</li>
-              <li className="text-gray-400">Gas Processing</li>
-              <li className="text-gray-400">ESG Reporting</li>
-              <li className="text-gray-400">Operations & Maintenance</li>
+              <li className="text-gray-400">Bitcoin Mining</li>
+              <li className="text-gray-400">Gas Processing & H2S Treatment</li>
+              <li className="text-gray-400">Compliance Documentation</li>
+              <li className="text-gray-400">Full-Service Operations</li>
             </ul>
           </div>
         </div>

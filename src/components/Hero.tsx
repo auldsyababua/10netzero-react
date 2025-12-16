@@ -102,17 +102,17 @@ export function Hero() {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 rounded-full px-4 py-2 mb-8">
               <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-              <span className="text-primary font-medium text-sm">Stranded Gas Solutions</span>
+              <span className="text-primary font-medium text-sm">Digital Midstream Solutions</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-white mb-6">
-              <span className="block">Our Goal:</span>
-              <span className="block text-primary">Zero Waste</span>
-              <span className="block">Net Zero Emissions</span>
+              <span className="block">Turn a</span>
+              <span className="block text-primary">Cost Center</span>
+              <span className="block">Into Revenue</span>
             </h1>
 
             <p className="text-xl lg:text-2xl text-gray-300 leading-relaxed mb-10 max-w-2xl">
-              We help O&G firms monetize their stranded natural gas while meeting their ESG goals.
+              When Waha goes negative, flaring becomes your least-bad option. We give you a better one that generates actual income.
             </p>
 
             {/* CTA Buttons */}
@@ -144,9 +144,9 @@ export function Hero() {
             className="mt-16 lg:mt-24 grid grid-cols-3 gap-4 lg:gap-8 max-w-2xl"
           >
             {[
-              { value: '98%', label: 'Reduced Methane' },
-              { value: '63%', label: 'Reduced CO2e' },
-              { value: '93%', label: 'Reduced VOCs' },
+              { value: '47%', label: 'Waha Negative Days in 2024' },
+              { value: '$750M', label: 'Burned in Texas (2018)' },
+              { value: '$0', label: 'Your Capital Outlay' },
             ].map((stat, index) => (
               <div key={stat.label} className="text-center lg:text-left">
                 <div className="text-3xl lg:text-5xl font-bold text-primary mb-1">{stat.value}</div>

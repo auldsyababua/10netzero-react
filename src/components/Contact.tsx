@@ -34,17 +34,17 @@ export function Contact() {
           <div className="inline-flex items-center gap-3 mb-6">
             <div className="w-3 h-3 bg-primary rounded-full animate-pulse" />
             <span className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
-              Get In Touch
+              Get Started
             </span>
             <div className="w-3 h-3 bg-accent-green rounded-full animate-pulse" />
           </div>
-          
+
           <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-foreground">
-            Let's <span className="text-primary">Connect</span>
+            Get Your <span className="text-primary">Free Assessment</span>
           </h2>
-          
+
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Ready to monetize your stranded gas? Get in touch to discuss your specific needs and receive a free site assessment.
+            Tell us about your wells. We'll tell you exactly what your stranded gas is worth and how quickly we can get you generating revenue.
           </p>
         </div>
 
@@ -57,7 +57,7 @@ export function Contact() {
                   Contact Information
                 </h3>
                 <p className="text-muted-foreground mb-8">
-                  Have questions about our solutions? Our team is ready to help you find the right approach for your operation.
+                  Based in Houston. Working across the Permian. Tell us about your stranded gas situation and we'll get back to you with a straight answer.
                 </p>
               </div>
 
@@ -182,7 +182,7 @@ export function Contact() {
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                         className="w-full px-4 py-3 bg-muted border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 gentle-animation resize-none"
-                        placeholder="Tell us about your stranded gas situation..."
+                        placeholder="Tell us about your wells, gas volumes, and what you're dealing with..."
                       />
                     </div>
 

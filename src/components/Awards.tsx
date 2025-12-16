@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Leaf, Droplets, Wind, Factory } from 'lucide-react'
+import { DollarSign, TrendingUp, Shield, Clock } from 'lucide-react'
 
 export function Awards() {
   const ref = useRef(null)
@@ -11,31 +11,31 @@ export function Awards() {
 
   const benefits = [
     {
-      icon: Leaf,
-      value: '98%',
-      label: 'Reduced Methane',
-      description: 'Near-complete elimination of methane emissions from flaring operations',
-      color: 'accent-green'
-    },
-    {
-      icon: Factory,
-      value: '63%',
-      label: 'Reduced CO2e',
-      description: 'Significant reduction in carbon dioxide equivalent emissions',
+      icon: DollarSign,
+      value: '$0',
+      label: 'Capital Required',
+      description: 'We bring the equipment and handle installation. No upfront investment from you.',
       color: 'primary'
     },
     {
-      icon: Wind,
-      value: '93%',
-      label: 'Reduced VOCs',
-      description: 'Dramatic decrease in volatile organic compound releases',
+      icon: TrendingUp,
+      value: '99.89%',
+      label: 'Combustion Efficiency',
+      description: 'Our generators achieve near-complete combustion vs 91% for typical flares.',
+      color: 'accent-green'
+    },
+    {
+      icon: Shield,
+      value: '100%',
+      label: 'Regulatory Compliance',
+      description: 'Documentation for EPA requirements and federal methane fee calculations.',
       color: 'accent-blue'
     },
     {
-      icon: Droplets,
-      value: '100%',
-      label: 'Gas Utilization',
-      description: 'Convert all stranded gas into valuable electricity',
+      icon: Clock,
+      value: 'Weeks',
+      label: 'To Revenue',
+      description: 'Fast deployment gets you generating income, not waiting on pipeline permits.',
       color: 'accent-emerald'
     }
   ]
@@ -44,24 +44,24 @@ export function Awards() {
     <section id="impact" className="relative py-24 lg:py-32 bg-card/30 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
-      
+
       <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-3 mb-6">
             <div className="w-3 h-3 bg-accent-green rounded-full animate-pulse" />
             <span className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
-              Environmental Impact
+              Why It Works
             </span>
             <div className="w-3 h-3 bg-primary rounded-full animate-pulse" />
           </div>
-          
+
           <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-foreground">
-            <span className="text-accent-green">Reducing</span> CO2e Emissions
+            Better <span className="text-primary">Economics</span> Than Flaring
           </h2>
-          
+
           <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-            Natural gas has already provided immense savings in GHG emissions. We make it even more environmentally friendly by utilizing otherwise wasted natural gas.
+            When Waha goes negative, you're paying to have gas taken or burning money at the wellhead. We give you a third option that actually generates revenue.
           </p>
         </div>
 
@@ -94,7 +94,7 @@ export function Awards() {
           ))}
         </div>
 
-        {/* ESG Alignment Banner */}
+        {/* Regulatory Timeline Banner */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -104,17 +104,17 @@ export function Awards() {
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
             <div className="text-center lg:text-left">
               <h3 className="font-display text-2xl lg:text-3xl font-bold text-foreground mb-3">
-                Align with Your ESG Goals
+                Get Ahead of the Regulatory Cliff
               </h3>
               <p className="text-muted-foreground text-lg max-w-2xl">
-                Our solutions help you meet environmental commitments while creating economic value from stranded assets.
+                EPA rules tighten in 2026. Methane fees hit $1,500/ton. The Texas permit party won't last forever. Solve your stranded gas problem now—before it becomes a compliance scramble.
               </p>
             </div>
             <button
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               className="bg-accent-green text-white font-semibold px-8 py-4 rounded-lg hover:bg-accent-green/90 gentle-animation whitespace-nowrap"
             >
-              Start Your ESG Journey
+              Talk to Us Today
             </button>
           </div>
         </motion.div>

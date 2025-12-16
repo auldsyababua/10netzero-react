@@ -17,17 +17,17 @@ export function Portfolio() {
           <div className="inline-flex items-center gap-3 mb-6">
             <div className="w-3 h-3 bg-primary rounded-full animate-pulse" />
             <span className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
-              The Challenge
+              The Problem
             </span>
             <div className="w-3 h-3 bg-accent-green rounded-full animate-pulse" />
           </div>
-          
+
           <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-foreground">
-            <span className="text-primary">Wasting</span> Gas is No Longer Necessary
+            You're <span className="text-primary">Burning Money</span> at the Wellhead
           </h2>
-          
+
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            10NetZero offers flexible, no-cost solutions to excess natural gas problems. Our customized plug-n-play products create economic value, reduce Methane, and meet ESG initiatives.
+            Infrastructure gaps, negative pricing, and capital constraints force operators to flare gas that could generate revenue. We solve that problem without requiring your capital.
           </p>
         </div>
 
@@ -35,25 +35,25 @@ export function Portfolio() {
         <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-20">
           {[
             {
-              icon: Flame,
-              title: 'Global Flaring Crisis',
-              description: 'Billions of cubic feet of natural gas are flared or vented annually, wasting valuable resources and harming the environment.',
-              stat: '145B m³',
-              statLabel: 'Gas flared annually'
+              icon: DollarSign,
+              title: 'Negative Pricing',
+              description: 'Waha Hub traded negative nearly half of 2024. When you have to pay to have your gas taken, flaring becomes the economically rational choice.',
+              stat: '-$6.41',
+              statLabel: 'Waha low (Aug 2024)'
             },
             {
               icon: AlertTriangle,
-              title: 'Growing Regulations',
-              description: 'Increasingly strict ESG requirements and emissions regulations are putting pressure on operators to find solutions.',
-              stat: '47 States',
-              statLabel: 'With flaring regulations'
+              title: 'Infrastructure Gaps',
+              description: 'Pipeline construction costs hit $10.7M per mile. Midstream companies prioritize high-volume commitments. Smaller operators wait—or flare.',
+              stat: '$10.7M',
+              statLabel: 'Per mile pipeline cost'
             },
             {
-              icon: DollarSign,
-              title: 'Lost Revenue',
-              description: 'Stranded gas represents billions in lost potential revenue for operators who lack infrastructure to capture it.',
-              stat: '$Billions',
-              statLabel: 'In annual lost value'
+              icon: Flame,
+              title: 'Regulatory Cliff Ahead',
+              description: 'Federal methane fees hit $1,500/ton by 2026. EPA rules phase out routine flaring at new wells. The permissive Texas environment won\'t last.',
+              stat: '$1,500',
+              statLabel: 'Per ton methane fee (2026)'
             }
           ].map((item, index) => (
             <motion.div
@@ -82,52 +82,50 @@ export function Portfolio() {
             <div>
               <div className="inline-flex items-center gap-2 bg-primary/20 rounded-full px-4 py-2 mb-6">
                 <TrendingUp className="w-4 h-4 text-primary" />
-                <span className="text-primary font-medium text-sm">A Growing Problem</span>
+                <span className="text-primary font-medium text-sm">The Numbers Don't Lie</span>
               </div>
               <h3 className="font-display text-3xl lg:text-4xl font-bold mb-6">
-                Fields are getting more gaseous, with increasing pressure to act.
+                Texas operators burned $750 million in 2018. The problem hasn't gone away.
               </h3>
               <p className="text-gray-300 text-lg leading-relaxed mb-8">
-                As oil production continues to grow, so does the associated gas. Without proper infrastructure, this valuable resource goes to waste—and operators face mounting regulatory and public pressure.
+                Even with reduced flaring intensity, record production means substantial volumes still go up in smoke. That's revenue you're not capturing—and costs you'll face when federal rules bite.
               </p>
               <div className="grid grid-cols-2 gap-6">
                 <div>
-                  <div className="text-3xl font-bold text-primary mb-1">150%</div>
-                  <div className="text-gray-400">Increase in flaring since 2010</div>
+                  <div className="text-3xl font-bold text-primary mb-1">99%+</div>
+                  <div className="text-gray-400">RRC permit approval rate</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-accent-green mb-1">2030</div>
-                  <div className="text-gray-400">Zero routine flaring target</div>
+                  <div className="text-3xl font-bold text-accent-green mb-1">2026</div>
+                  <div className="text-gray-400">EPA flaring phase-out deadline</div>
                 </div>
               </div>
             </div>
-            
-            {/* Chart Placeholder */}
+
+            {/* Regulatory Timeline */}
             <div className="bg-gray-800/50 rounded-2xl p-6 border border-gray-700">
-              <h4 className="font-semibold text-lg mb-4">Expected U.S. Production Growth</h4>
+              <h4 className="font-semibold text-lg mb-4">Federal Methane Fee Schedule</h4>
               <div className="space-y-4">
                 {[
-                  { year: '2024', oil: 85, gas: 75 },
-                  { year: '2026', oil: 90, gas: 82 },
-                  { year: '2028', oil: 95, gas: 90 },
-                  { year: '2030', oil: 100, gas: 98 },
+                  { year: '2024', fee: '$900/ton', width: 60 },
+                  { year: '2025', fee: '$1,200/ton', width: 80 },
+                  { year: '2026+', fee: '$1,500/ton', width: 100 },
                 ].map((item) => (
                   <div key={item.year} className="flex items-center gap-4">
-                    <span className="text-gray-400 w-12">{item.year}</span>
-                    <div className="flex-1 flex gap-2">
-                      <div 
-                        className="h-6 bg-primary/80 rounded-r-full"
-                        style={{ width: `${item.oil}%` }}
-                      />
+                    <span className="text-gray-400 w-16">{item.year}</span>
+                    <div className="flex-1 flex gap-2 items-center">
+                      <div
+                        className="h-8 bg-primary/80 rounded-r-full flex items-center justify-end pr-3"
+                        style={{ width: `${item.width}%` }}
+                      >
+                        <span className="text-white text-sm font-semibold">{item.fee}</span>
+                      </div>
                     </div>
                   </div>
                 ))}
               </div>
-              <div className="flex gap-6 mt-6 pt-4 border-t border-gray-700">
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 bg-primary rounded-full" />
-                  <span className="text-sm text-gray-400">Oil Production Index</span>
-                </div>
+              <div className="mt-6 pt-4 border-t border-gray-700">
+                <p className="text-sm text-gray-400">Applies to facilities reporting &gt;25,000 metric tons CO2-equivalent/year</p>
               </div>
             </div>
           </div>

@@ -13,36 +13,36 @@ export function About() {
     {
       number: "01",
       title: "Site Assessment",
-      description: "We evaluate your gas volume, composition, and site requirements to design the optimal solution.",
+      description: "We evaluate gas volume, H2S content, and site access. You get a clear picture of your revenue potential.",
       icon: BarChart3
     },
     {
-      number: "02", 
+      number: "02",
       title: "Custom Design",
-      description: "Our engineers design a plug-and-play gas-to-power system tailored to your specific needs.",
+      description: "We handle the engineering for your specific gas composition—including sour gas treatment if needed.",
       icon: Settings
     },
     {
       number: "03",
-      title: "Installation",
-      description: "Quick deployment with minimal disruption to your operations. Most systems are operational within weeks.",
+      title: "Deployment",
+      description: "We bring equipment, install it, and get you operational. No pipeline wait, no capital outlay from you.",
       icon: Zap
     },
     {
       number: "04",
-      title: "Ongoing Monitoring",
-      description: "24/7 remote monitoring and maintenance ensures optimal performance and maximum uptime.",
+      title: "Operations",
+      description: "We run the equipment, handle maintenance, and send you checks. You focus on drilling.",
       icon: Shield
     }
   ]
 
   const benefits = [
-    "No upfront capital investment required",
+    "No upfront capital investment",
     "Flexible contract terms",
-    "Revenue sharing from power generation",
-    "Meet ESG and regulatory requirements",
-    "Reduce flaring and venting",
-    "Turn waste into profit"
+    "Revenue sharing from day one",
+    "Avoid federal methane fees",
+    "Get ahead of EPA rules",
+    "Portable equipment moves with production"
   ]
 
   return (
@@ -58,13 +58,13 @@ export function About() {
             </span>
             <div className="w-3 h-3 bg-accent-green rounded-full animate-pulse" />
           </div>
-          
+
           <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-foreground">
-            Our Company <span className="text-primary">Eliminates</span> the Need to Flare
+            We Bring the <span className="text-primary">Infrastructure</span> to Your Wellhead
           </h2>
-          
+
           <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-            10NetZero offers flexible, no-cost solutions to excess natural gas problems. Our customized plug-n-play products and services create economic value while meeting ESG initiatives.
+            You can't build a $10M/mile pipeline for a few wells. We deploy capital and equipment at your site—you provide the gas, we handle the rest, and you get revenue instead of flare permits.
           </p>
         </div>
 
@@ -103,10 +103,10 @@ export function About() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h3 className="font-display text-3xl lg:text-4xl font-bold mb-6">
-                Zero Capital Investment Required
+                We Deploy the Capital. You Collect the Checks.
               </h3>
               <p className="text-gray-300 text-lg leading-relaxed mb-8">
-                We handle everything—from equipment and installation to maintenance and monitoring. You simply provide the gas, and we create value together.
+                At $10.7M per pipeline mile, you're not building infrastructure for a few wells. We bring the equipment, we run it, we maintain it. You provide the gas and start generating revenue.
               </p>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

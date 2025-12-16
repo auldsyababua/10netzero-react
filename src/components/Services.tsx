@@ -13,38 +13,38 @@ export function Services() {
     {
       icon: Zap,
       title: "Gas-to-Power Generation",
-      description: "Convert stranded natural gas into electricity using our efficient generator sets. Power your operations or sell back to the grid.",
+      description: "Convert stranded gas into electricity. Power your operations, reduce diesel costs, or sell to the grid during peak pricing.",
       features: ["Mobile & permanent solutions", "Scalable capacity", "Grid integration ready"]
     },
     {
       icon: Server,
-      title: "Bitcoin Mining Solutions",
-      description: "Monetize excess gas through cryptocurrency mining. Our containerized data centers convert gas to digital assets.",
-      features: ["Turnkey deployment", "Remote management", "Flexible revenue models"]
+      title: "Bitcoin Mining",
+      description: "Turn flare gas into Bitcoin. Containerized data centers deploy at your wellhead and generate revenue from day one.",
+      features: ["Proven at ExxonMobil, Marathon", "Remote management", "Better returns than negative Waha"]
     },
     {
       icon: Droplets,
       title: "Gas Processing",
-      description: "Clean and condition your gas for various end uses. We handle everything from H2S removal to NGL recovery.",
-      features: ["Custom gas treatment", "NGLs extraction", "Quality specifications"]
+      description: "85%+ of Permian gas has H2S issues. We handle sour gas treatment, NGL recovery, and get your gas to spec.",
+      features: ["H2S removal", "NGL extraction", "Pipeline-quality gas"]
     },
     {
       icon: LineChart,
-      title: "ESG Reporting",
-      description: "Track and document your emissions reductions for regulatory compliance and stakeholder reporting.",
-      features: ["Real-time monitoring", "Compliance reports", "Carbon credit tracking"]
+      title: "Compliance Documentation",
+      description: "Federal rules require proof of capture efforts. We document everything and generate the reports you need.",
+      features: ["Real-time monitoring", "Regulatory reports", "Audit-ready records"]
     },
     {
       icon: Wrench,
-      title: "Operations & Maintenance",
-      description: "24/7 remote monitoring and on-site maintenance to ensure maximum uptime and optimal performance.",
-      features: ["Predictive maintenance", "Rapid response", "Performance optimization"]
+      title: "Full-Service Operations",
+      description: "We run the equipment, maintain it, and handle problems. You get revenue without the headaches.",
+      features: ["24/7 monitoring", "Predictive maintenance", "Rapid response"]
     },
     {
       icon: Cloud,
-      title: "Emissions Reduction",
-      description: "Comprehensive solutions to reduce flaring, venting, and fugitive emissions across your operations.",
-      features: ["Methane mitigation", "Flare elimination", "Leak detection"]
+      title: "Portable Solutions",
+      description: "Wells decline. Our equipment moves with production. No stranded assets when volumes drop.",
+      features: ["Relocatable equipment", "Flexible contracts", "Matches well lifecycle"]
     }
   ]
 
@@ -61,13 +61,13 @@ export function Services() {
             </span>
             <div className="w-3 h-3 bg-accent-blue rounded-full animate-pulse" />
           </div>
-          
+
           <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-foreground">
-            Comprehensive <span className="text-primary">Solutions</span>
+            Multiple Ways to <span className="text-primary">Monetize</span>
           </h2>
-          
+
           <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-            From gas processing to power generation, we offer end-to-end solutions tailored to your specific operational needs.
+            Different wells need different solutions. We match the right approach to your gas volume, composition, and location—then handle everything from there.
           </p>
         </div>
 
@@ -108,16 +108,16 @@ export function Services() {
           className="mt-16 bg-gradient-to-r from-primary to-primary/80 rounded-2xl p-8 lg:p-12 text-white text-center"
         >
           <h3 className="font-display text-2xl lg:text-3xl font-bold mb-4">
-            Ready to Monetize Your Stranded Gas?
+            Stop Burning Money. Start Making It.
           </h3>
           <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-            Get a free site assessment and discover how much value you could unlock from your stranded gas assets.
+            Get a free site assessment. We'll tell you exactly what your stranded gas is worth and how fast we can get you operational.
           </p>
           <button
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             className="bg-white text-primary font-semibold px-8 py-4 rounded-lg hover:bg-white/90 gentle-animation"
           >
-            Request Free Assessment
+            Get Your Free Assessment
           </button>
         </motion.div>
       </div>
