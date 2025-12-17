@@ -5,6 +5,9 @@ import { Server, Shield, Gauge, Clock, ArrowRight, CheckCircle } from 'lucide-re
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { Contact } from '@/components/Contact'
+import { SEOHead } from '@/components/seo/SEOHead'
+import { ServiceSchema, BreadcrumbSchema } from '@/components/seo/JsonLd'
+import { pagesSEO, buildUrl } from '@/config/seo'
 
 const features = [
   {
@@ -39,6 +42,23 @@ const specs = [
 export default function DataCenterOps() {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <SEOHead
+        title={pagesSEO.dataCenterOps.title}
+        description={pagesSEO.dataCenterOps.description}
+        keywords={pagesSEO.dataCenterOps.keywords}
+        path={pagesSEO.dataCenterOps.path}
+      />
+      <ServiceSchema
+        name="Data Center Operations"
+        description="Mobile data center operations powered by stranded natural gas. High-performance computing at the wellhead."
+        url={buildUrl(pagesSEO.dataCenterOps.path)}
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: buildUrl('/') },
+          { name: 'Data Center Operations', url: buildUrl(pagesSEO.dataCenterOps.path) },
+        ]}
+      />
       <Navbar />
       
       {/* Hero Section */}

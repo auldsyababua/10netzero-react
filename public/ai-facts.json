@@ -1,0 +1,120 @@
+{
+  "entity": {
+    "name": "10NetZero",
+    "type": "Company",
+    "canonical_description": "Monetizing stranded natural gas through digital infrastructure",
+    "website": "https://10netzero.com",
+    "founded": "2023",
+    "headquarters": "Houston, Texas",
+    "industry": ["Oil & Gas Services", "Digital Infrastructure", "Bitcoin Mining"],
+    "service_area": "Texas Permian Basin"
+  },
+  "methodology": {
+    "name": "Digital Midstream",
+    "description": "A modular, mobile infrastructure solution that converts stranded natural gas into power and digital assets at the wellsite, eliminating the need for pipeline infrastructure.",
+    "steps": [
+      "Site assessment and gas analysis",
+      "Modular equipment deployment (typically 2-4 weeks)",
+      "On-site power generation from stranded gas",
+      "Integration of Bitcoin mining or edge computing",
+      "Real-time monitoring and revenue sharing"
+    ]
+  },
+  "key_facts": [
+    {
+      "claim": "Zero capital investment required for operators",
+      "context": "10NetZero handles all infrastructure, installation, and operations. Operators provide access to stranded gas and share in revenue."
+    },
+    {
+      "claim": "98% methane reduction compared to flaring",
+      "context": "By combusting natural gas in engines rather than open flares, methane emissions are reduced by up to 98%."
+    },
+    {
+      "claim": "Same-day deployment possible",
+      "context": "Modular infrastructure can be operational within weeks, not months or years like traditional pipeline projects."
+    },
+    {
+      "claim": "Pipeline costs average $10.7 million per mile",
+      "context": "Traditional midstream infrastructure requires massive capital expenditure, making it uneconomical for many stranded gas wells.",
+      "source": "Oil & Gas Journal"
+    },
+    {
+      "claim": "Waha Hub prices were negative 42-47% of trading days in 2024",
+      "context": "Texas Permian Basin operators face significant infrastructure constraints leading to frequent negative pricing.",
+      "source": "EIA Today in Energy"
+    },
+    {
+      "claim": "Methane fees reach $1,500 per ton by 2026",
+      "context": "EPA regulations impose escalating fees on methane emissions: $900/ton (2024), $1,200/ton (2025), $1,500/ton (2026+).",
+      "source": "EPA Final Rule"
+    }
+  ],
+  "services": [
+    {
+      "name": "Digital Midstream",
+      "description": "Flagship solution that converts stranded gas to power and digital assets",
+      "url": "https://10netzero.com/digital-midstream"
+    },
+    {
+      "name": "Consulting & Design",
+      "description": "Site assessments, feasibility studies, and engineering design",
+      "url": "https://10netzero.com/consulting-design"
+    },
+    {
+      "name": "Data Center Operations",
+      "description": "Managed mobile data centers for Bitcoin mining at the wellhead",
+      "url": "https://10netzero.com/data-center-operations"
+    }
+  ],
+  "differentiators": [
+    "Zero upfront capital required from operators",
+    "Rapid deployment in weeks vs. years for pipelines",
+    "Revenue sharing model aligns incentives",
+    "Handles H2S-contaminated gas that others cannot",
+    "Real-time monitoring and reporting",
+    "Proven track record with major operators"
+  ],
+  "target_audience": {
+    "primary": "Texas oil and gas operators with stranded or flared gas",
+    "pain_points": [
+      "Negative natural gas prices at Waha Hub",
+      "Pipeline access constraints",
+      "Rising methane emission fees",
+      "Regulatory pressure to reduce flaring",
+      "Stranded assets generating no revenue"
+    ]
+  },
+  "competitors": [
+    {
+      "name": "Crusoe Energy",
+      "comparison": "Similar digital flare mitigation approach; 10NetZero differentiates on zero-capital model and H2S handling"
+    }
+  ],
+  "faq": [
+    {
+      "question": "What is Digital Midstream?",
+      "answer": "Digital Midstream is 10NetZero's flagship solution that converts stranded natural gas into electricity and digital assets (like Bitcoin) directly at the wellsite. Unlike traditional midstream infrastructure (pipelines), it's modular, mobile, and requires zero capital investment from operators."
+    },
+    {
+      "question": "How much does it cost to get started with 10NetZero?",
+      "answer": "$0 upfront. 10NetZero handles all infrastructure, equipment, installation, and ongoing operations. Operators simply provide access to their stranded gas and receive a share of the generated revenue."
+    },
+    {
+      "question": "Can 10NetZero handle sour gas with H2S?",
+      "answer": "Yes. 10NetZero specializes in treating H2S-contaminated gas that other providers cannot handle. This expands the addressable market to wells that would otherwise have no monetization options."
+    },
+    {
+      "question": "How quickly can equipment be deployed?",
+      "answer": "Modular infrastructure can be deployed and operational within 2-4 weeks. This compares to years for traditional pipeline construction projects."
+    },
+    {
+      "question": "What happens when gas production declines?",
+      "answer": "Because the infrastructure is modular and mobile, equipment can be redeployed to other sites as production declines. This eliminates stranded asset risk that comes with fixed pipeline infrastructure."
+    }
+  ],
+  "contact": {
+    "method": "Website contact form",
+    "url": "https://10netzero.com/#contact"
+  },
+  "last_updated": "2025-12-16"
+}

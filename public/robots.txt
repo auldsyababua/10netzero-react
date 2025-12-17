@@ -1,14 +1,54 @@
+# 10NetZero robots.txt
+# https://10netzero.com
+
+# Search Engines
 User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
 Allow: /
 
+# Social Media Crawlers
 User-agent: Twitterbot
 Allow: /
 
 User-agent: facebookexternalhit
 Allow: /
 
+User-agent: LinkedInBot
+Allow: /
+
+# AI Search / Answer Engines
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: claude-web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Default
 User-agent: *
 Allow: /
+
+# Sitemap
+Sitemap: https://10netzero.com/sitemap.xml
+
+# AI Facts endpoint for structured data
+# https://10netzero.com/ai-facts.json

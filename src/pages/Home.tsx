@@ -6,10 +6,21 @@ import { Services } from '@/components/Services'
 import { Team } from '@/components/Team'
 import { Contact } from '@/components/Contact'
 import { Footer } from '@/components/Footer'
+import { SEOHead } from '@/components/seo/SEOHead'
+import { OrganizationSchema, WebSiteSchema } from '@/components/seo/JsonLd'
+import { pagesSEO } from '@/config/seo'
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <SEOHead
+        title={pagesSEO.home.title}
+        description={pagesSEO.home.description}
+        keywords={pagesSEO.home.keywords}
+        path={pagesSEO.home.path}
+      />
+      <OrganizationSchema />
+      <WebSiteSchema />
       <main className="relative" role="main">
         <section id="hero" aria-label="Hero section">
           <Hero />

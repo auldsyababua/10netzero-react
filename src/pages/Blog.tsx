@@ -5,6 +5,9 @@ import { Calendar, Clock, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
+import { SEOHead } from '@/components/seo/SEOHead'
+import { BreadcrumbSchema } from '@/components/seo/JsonLd'
+import { pagesSEO, buildUrl } from '@/config/seo'
 
 const blogPosts = [
   {
@@ -62,6 +65,18 @@ const categories = ['All', 'Industry Insights', 'Technology', 'Compliance', 'Cas
 export default function Blog() {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <SEOHead
+        title={pagesSEO.blog.title}
+        description={pagesSEO.blog.description}
+        keywords={pagesSEO.blog.keywords}
+        path={pagesSEO.blog.path}
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: buildUrl('/') },
+          { name: 'Blog', url: buildUrl('/blog') },
+        ]}
+      />
       <Navbar />
       
       {/* Hero Section */}

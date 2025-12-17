@@ -5,6 +5,9 @@ import { Lightbulb, FileText, Ruler, Users, ArrowRight, CheckCircle } from 'luci
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { Contact } from '@/components/Contact'
+import { SEOHead } from '@/components/seo/SEOHead'
+import { ServiceSchema, BreadcrumbSchema } from '@/components/seo/JsonLd'
+import { pagesSEO, buildUrl } from '@/config/seo'
 
 const services = [
   {
@@ -55,6 +58,23 @@ const process = [
 export default function ConsultingDesign() {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <SEOHead
+        title={pagesSEO.consultingDesign.title}
+        description={pagesSEO.consultingDesign.description}
+        keywords={pagesSEO.consultingDesign.keywords}
+        path={pagesSEO.consultingDesign.path}
+      />
+      <ServiceSchema
+        name="Consulting & Engineering Design"
+        description="Expert consulting for flare gas monetization projects. Feasibility studies, regulatory compliance, and engineering design."
+        url={buildUrl(pagesSEO.consultingDesign.path)}
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: buildUrl('/') },
+          { name: 'Consulting & Design', url: buildUrl(pagesSEO.consultingDesign.path) },
+        ]}
+      />
       <Navbar />
       
       {/* Hero Section */}

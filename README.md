@@ -1,73 +1,131 @@
-# Welcome to your Lovable project
+# 10NetZero Website
 
-## Project info
+Corporate website for 10NetZero - a Digital Midstream company helping oil & gas operators monetize stranded natural gas.
 
-**URL**: https://lovable.dev/projects/1169db3a-30f3-49bc-bd0b-9cda42ae0ebe
+## About 10NetZero
 
-## How can I edit this code?
+10NetZero offers flexible, no-cost solutions to excess natural gas problems. We deploy capital and equipment at well sites to convert stranded gas into revenue through:
 
-There are several ways of editing your application.
+- **Gas-to-Power Generation** - On-site electricity generation
+- **Bitcoin Mining Solutions** - Containerized data centers powered by flare gas
+- **Gas Processing** - H2S removal and NGL recovery
+- **Compliance Documentation** - Emissions tracking and regulatory reporting
 
-**Use Lovable**
+**Value Proposition:** Turn a cost center into revenue. When Waha Hub prices go negative (42-47% of 2024 trading days), flaring becomes the least-bad option. We give operators a better option that generates actual income.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/1169db3a-30f3-49bc-bd0b-9cda42ae0ebe) and start prompting.
+## Tech Stack
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Framework:** React 18 + TypeScript
+- **Build:** Vite 5
+- **Styling:** Tailwind CSS + shadcn/ui components
+- **Animation:** Framer Motion
+- **Routing:** React Router DOM
 
-**Use your preferred IDE**
+## Getting Started
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+```bash
+# Install dependencies
+npm install
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
 npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
 ```
 
-**Edit a file directly in GitHub**
+The dev server runs at `http://localhost:5173` by default.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Project Structure
 
-**Use GitHub Codespaces**
+```
+src/
+├── components/
+│   ├── ui/              # shadcn/ui components
+│   ├── Hero.tsx         # Landing hero with video background
+│   ├── Portfolio.tsx    # "The Problem" section
+│   ├── Awards.tsx       # Environmental impact metrics
+│   ├── About.tsx        # "Our Solution" section
+│   ├── Services.tsx     # Service offerings grid
+│   ├── Team.tsx         # Team member cards
+│   ├── Contact.tsx      # Contact form
+│   ├── Footer.tsx       # Site footer
+│   └── Navbar.tsx       # Navigation with mobile menu
+├── pages/
+│   ├── Home.tsx         # Main landing page
+│   ├── DigitalMidstream.tsx
+│   ├── ConsultingDesign.tsx
+│   ├── DataCenterOps.tsx
+│   ├── Blog.tsx
+│   └── TeamPage.tsx
+├── App.tsx              # Router configuration
+├── main.tsx             # Entry point
+└── index.css            # Global styles + Tailwind config
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Documentation
 
-## What technologies are used for this project?
+Research and strategy documents are in `/docs`:
 
-This project is built with:
+```
+docs/
+├── DEVLOG.md                    # Development session log
+├── vision-presentation.md       # AI/Off-Grid Energy OS strategy
+├── competitor-analysis.md       # Digital Midstream competitive analysis
+└── research/
+    └── oil-well-operator-needs/
+        ├── FINAL-VALIDATED-REPORT.md  # Fact-checked operator research
+        ├── CONSENSUS-REPORT.md        # Analysis of 4 research reports
+        ├── chatgpt-research.md
+        ├── claude-research.md
+        ├── gemini-research.md
+        └── perplexity-research.md
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Key Messaging (from Research)
 
-## How can I deploy this project?
+Based on validated research, the website should frame messaging around practical operator concerns:
 
-Simply open [Lovable](https://lovable.dev/projects/1169db3a-30f3-49bc-bd0b-9cda42ae0ebe) and click on Share -> Publish.
+| Frame | Message |
+|-------|---------|
+| Primary | "Turn a cost center into revenue" |
+| Secondary | "Avoid the regulatory cliff" ($1,500/ton methane fees by 2026) |
+| Tertiary | "Solve the infrastructure problem" ($10.7M/mile pipeline costs) |
 
-## Can I connect a custom domain to my Lovable project?
+**Avoid:** Climate change, ESG, sustainability, "green" language. Texas operators are skeptical of environmental framing.
 
-Yes, you can!
+See `docs/research/oil-well-operator-needs/FINAL-VALIDATED-REPORT.md` for complete messaging strategy.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## Development Notes
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+### Known Issues
+
+- `src/pages/Index.tsx` contains dead code (Russian text, different design system) - not used in routes
+- Contact form simulates submission only - needs backend integration
+- Video background requires `/public/videos/hero-background.mp4`
+
+### Design System
+
+Current implementation uses:
+- **Fonts:** Inter (body) + Space Grotesk (display)
+- **Primary Color:** Orange (`hsl(24 90% 49%)`)
+- **Dark Theme:** Gray-900 backgrounds with white/gray text
+
+CSS custom properties are defined in `src/index.css` for theming.
+
+## Deployment
+
+Build the production bundle:
+
+```bash
+npm run build
+```
+
+Output is in `/dist`. Deploy to any static hosting (Vercel, Netlify, S3, etc.).
+
+## License
+
+Proprietary - 10NetZero, Inc.

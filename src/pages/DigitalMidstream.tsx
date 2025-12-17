@@ -1,10 +1,72 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Zap, TrendingUp, Shield, BarChart3, CheckCircle, ArrowRight } from 'lucide-react'
+import { Zap, TrendingUp, Shield, BarChart3, CheckCircle, ArrowRight, ChevronDown } from 'lucide-react'
+import { useState } from 'react'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { Contact } from '@/components/Contact'
+import { SEOHead } from '@/components/seo/SEOHead'
+import { ServiceSchema, BreadcrumbSchema, FAQSchema } from '@/components/seo/JsonLd'
+import { pagesSEO, buildUrl } from '@/config/seo'
+
+const faqItems = [
+  {
+    question: "What is Digital Midstream?",
+    answer: "Digital Midstream is 10NetZero's flagship solution that converts stranded natural gas into electricity and digital assets (like Bitcoin) directly at the wellsite. Unlike traditional midstream infrastructure (pipelines), it's modular, mobile, and requires zero capital investment from operators."
+  },
+  {
+    question: "How much does it cost to get started with 10NetZero?",
+    answer: "$0 upfront. 10NetZero handles all infrastructure, equipment, installation, and ongoing operations. Operators simply provide access to their stranded gas and receive a share of the generated revenue."
+  },
+  {
+    question: "Can 10NetZero handle sour gas with H2S?",
+    answer: "Yes. 10NetZero specializes in treating H2S-contaminated gas that other providers cannot handle. This expands the addressable market to wells that would otherwise have no monetization options."
+  },
+  {
+    question: "How quickly can equipment be deployed?",
+    answer: "Modular infrastructure can be deployed and operational within 2-4 weeks. This compares to years for traditional pipeline construction projects."
+  },
+  {
+    question: "What happens when gas production declines?",
+    answer: "Because the infrastructure is modular and mobile, equipment can be redeployed to other sites as production declines. This eliminates stranded asset risk that comes with fixed pipeline infrastructure."
+  }
+]
+
+// FAQ Accordion Item Component
+function FAQItem({ question, answer, index }: { question: string; answer: string; index: number }) {
+  const [isOpen, setIsOpen] = useState(false)
+  const contentId = `faq-content-${index}`
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.1 }}
+      className="border border-border rounded-xl overflow-hidden"
+    >
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        aria-expanded={isOpen}
+        aria-controls={contentId}
+        className="w-full px-6 py-5 flex items-center justify-between text-left bg-card hover:bg-muted/50 transition-colors"
+      >
+        <span className="font-semibold text-foreground pr-4">{question}</span>
+        <ChevronDown className={`w-5 h-5 text-muted-foreground transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+      </button>
+      {isOpen && (
+        <div
+          id={contentId}
+          aria-hidden={!isOpen}
+          className="px-6 py-5 bg-muted/30 border-t border-border"
+        >
+          <p className="text-muted-foreground leading-relaxed">{answer}</p>
+        </div>
+      )}
+    </motion.div>
+  )
+}
 
 const features = [
   {
@@ -41,6 +103,24 @@ const benefits = [
 export default function DigitalMidstream() {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <SEOHead
+        title={pagesSEO.digitalMidstream.title}
+        description={pagesSEO.digitalMidstream.description}
+        keywords={pagesSEO.digitalMidstream.keywords}
+        path={pagesSEO.digitalMidstream.path}
+      />
+      <ServiceSchema
+        name="Digital Midstream"
+        description="Convert stranded natural gas into revenue with on-site power generation and Bitcoin mining. Zero capital investment required."
+        url={buildUrl(pagesSEO.digitalMidstream.path)}
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: buildUrl('/') },
+          { name: 'Digital Midstream', url: buildUrl(pagesSEO.digitalMidstream.path) },
+        ]}
+      />
+      <FAQSchema items={faqItems} />
       <Navbar />
       
       {/* Hero Section */}
@@ -77,6 +157,38 @@ export default function DigitalMidstream() {
                 Request Assessment <ArrowRight className="w-5 h-5" />
               </motion.button>
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Answer Block / TL;DR - Optimized for AI extraction */}
+      <section className="py-12 px-6 sm:px-8 lg:px-12 bg-primary/5 border-y border-primary/20">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-card rounded-2xl p-8 border border-border shadow-lg"
+          >
+            <h2 className="text-lg font-semibold text-primary mb-4">Key Takeaways</h2>
+            <ul className="space-y-3 text-foreground">
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                <span><strong>Digital Midstream</strong> converts stranded natural gas into power and Bitcoin at the wellsite—no pipelines needed.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                <span><strong>$0 upfront cost</strong>—10NetZero handles all infrastructure and operations. Operators share in revenue.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                <span><strong>Deploy in weeks</strong>, not years. Modular equipment redeploys as wells decline.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                <span><strong>98% methane reduction</strong> compared to flaring. Meet regulatory requirements before 2026 fee escalation.</span>
+              </li>
+            </ul>
           </motion.div>
         </div>
       </section>
@@ -177,6 +289,31 @@ export default function DigitalMidstream() {
                 </div>
               </div>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 px-6 sm:px-8 lg:px-12">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Everything you need to know about Digital Midstream
+            </p>
+          </motion.div>
+
+          <div className="space-y-4">
+            {faqItems.map((item, index) => (
+              <FAQItem key={index} question={item.question} answer={item.answer} index={index} />
+            ))}
           </div>
         </div>
       </section>
