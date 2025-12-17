@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { Menu, X, ChevronDown } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import logo from '@/assets/10netzero-logo.png'
+import logo from '@/assets/10netzero-logo-transparent.png'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -74,7 +74,7 @@ export function Navbar() {
                 whileHover={{ scale: 1.02 }}
                 className="flex items-center cursor-pointer"
               >
-                <img src={logo} alt="10NetZero" className="h-14 md:h-16 lg:h-20 w-auto" width="200" height="80" />
+                <img src={logo} alt="10NetZero" className="h-5 sm:h-6 md:h-7 w-auto" width="110" height="28" />
               </motion.div>
             </Link>
 

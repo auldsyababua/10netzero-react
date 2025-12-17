@@ -1,7 +1,7 @@
 'use client'
 
 import { Linkedin, Twitter } from 'lucide-react'
-import logo from '@/assets/10netzero-logo.png'
+import logo from '@/assets/10netzero-logo-transparent.png'
 
 export function Footer() {
   const navigation = [
@@ -19,7 +19,7 @@ export function Footer() {
           {/* Logo and Description */}
           <div className="md:col-span-5">
             <div className="flex items-center mb-6">
-              <img src={logo} alt="10NetZero" className="h-16 w-auto" width="160" height="64" loading="lazy" />
+              <img src={logo} alt="10NetZero" className="h-8 w-auto" width="125" height="32" loading="lazy" />
             </div>
             <p className="text-gray-400 leading-relaxed mb-6 max-w-md">
               Digital Midstream solutions for Texas operators. We bring the infrastructure to your wellhead so you can turn stranded gas into revenue.
