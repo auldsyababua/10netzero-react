@@ -2,85 +2,50 @@
 
 import { motion } from 'framer-motion'
 import { Navbar } from '@/components/Navbar'
-import { useRef, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export function Hero() {
-  const videoRef = useRef<HTMLVideoElement>(null)
-  const [isReversing, setIsReversing] = useState(false)
-  const animationFrameRef = useRef<number>()
+  const [isMobile, setIsMobile] = useState(false)
 
+  // Detect mobile/slow connection - show static image instead of video
   useEffect(() => {
-    const video = videoRef.current
-    if (!video) return
+    const checkMobile = () => {
+      const isSmallScreen = window.innerWidth < 768
+      const connection = (navigator as any).connection
+      const isSlowConnection = connection &&
+        (connection.saveData || connection.effectiveType === '2g' || connection.effectiveType === 'slow-2g')
 
-    // Set playback speed to 100%
-    video.playbackRate = 1.0
-
-    const handleTimeUpdate = () => {
-      if (!video) return
-      
-      // When playing forward and reaching the end
-      if (!isReversing && video.currentTime >= video.duration - 0.1) {
-        video.pause()
-        setIsReversing(true)
-      }
+      setIsMobile(isSmallScreen || isSlowConnection)
     }
 
-    video.addEventListener('timeupdate', handleTimeUpdate)
-
-    return () => {
-      video.removeEventListener('timeupdate', handleTimeUpdate)
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current)
-      }
-    }
-  }, [isReversing])
-
-  // Handle reverse playback manually
-  useEffect(() => {
-    const video = videoRef.current
-    if (!video || !isReversing) return
-
-    let lastTime = performance.now()
-    
-    const reversePlay = (currentTime: number) => {
-      const deltaTime = (currentTime - lastTime) / 1000 // Convert to seconds
-      lastTime = currentTime
-      
-      // Move backwards at 100% speed
-      video.currentTime = Math.max(0, video.currentTime - deltaTime * 1.0)
-      
-      if (video.currentTime <= 0.1) {
-        // Reached the beginning, switch back to forward
-        video.currentTime = 0
-        setIsReversing(false)
-        video.play()
-      } else {
-        animationFrameRef.current = requestAnimationFrame(reversePlay)
-      }
-    }
-
-    animationFrameRef.current = requestAnimationFrame(reversePlay)
-
-    return () => {
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current)
-      }
-    }
-  }, [isReversing])
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-gray-900">
-      {/* Video Background */}
-      <video
-        ref={videoRef}
-        autoPlay
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover"
-      >
-        <source src="/videos/hero-background.mp4" type="video/mp4" />
-      </video>
+      {/* Background - Static image on mobile/slow connections, video on desktop */}
+      {isMobile ? (
+        <img
+          src="/images/hero-background.webp"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+          width="1920"
+          height="1080"
+        />
+      ) : (
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/images/hero-background.webp"
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/videos/hero-background.mp4" type="video/mp4" />
+        </video>
+      )}
 
       {/* Gradient Overlay for text readability */}
       <div className="absolute inset-0 bg-gray-900/50" />
@@ -147,7 +112,7 @@ export function Hero() {
               { value: '47%', label: 'Waha Negative Days in 2024' },
               { value: '$750M', label: 'Burned in Texas (2018)' },
               { value: '$0', label: 'Your Capital Outlay' },
-            ].map((stat, index) => (
+            ].map((stat) => (
               <div key={stat.label} className="text-center lg:text-left">
                 <div className="text-3xl lg:text-5xl font-bold text-primary mb-1">{stat.value}</div>
                 <div className="text-sm lg:text-base text-gray-400">{stat.label}</div>

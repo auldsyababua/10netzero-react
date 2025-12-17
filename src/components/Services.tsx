@@ -54,13 +54,9 @@ export function Services() {
         
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-3 mb-6">
-            <div className="w-3 h-3 bg-primary rounded-full animate-pulse" />
-            <span className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
-              What We Offer
-            </span>
-            <div className="w-3 h-3 bg-accent-blue rounded-full animate-pulse" />
-          </div>
+          <span className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-6 block">
+            What We Offer
+          </span>
 
           <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-foreground">
             Multiple Ways to <span className="text-primary">Monetize</span>

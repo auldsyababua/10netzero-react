@@ -60,10 +60,10 @@ export function Navbar() {
         transition={{ duration: 0.8, delay: 0.3 }}
         className="fixed top-0 left-0 right-0 w-full z-[110]"
       >
-        <div 
-          className={`w-full px-6 sm:px-8 lg:px-12 py-2 transition-all duration-300 ease-out ${
-            isScrolled 
-              ? 'bg-gray-900/95 backdrop-blur-xl border-b border-white/10' 
+        <div
+          className={`w-full px-6 sm:px-8 lg:px-12 py-1 transition-all duration-300 ease-out ${
+            isScrolled
+              ? 'bg-gray-900/95 backdrop-blur-xl border-b border-white/10'
               : 'bg-gray-900/80 backdrop-blur-sm'
           }`}
         >
@@ -74,7 +74,7 @@ export function Navbar() {
                 whileHover={{ scale: 1.02 }}
                 className="flex items-center cursor-pointer"
               >
-                <img src={logo} alt="10NetZero" className="h-16 md:h-20 w-auto" />
+                <img src={logo} alt="10NetZero" className="h-14 md:h-16 lg:h-20 w-auto" width="200" height="80" />
               </motion.div>
             </Link>
 
@@ -158,8 +158,11 @@ export function Navbar() {
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className="md:hidden bg-white/10 p-3 rounded-full text-white hover:bg-white/20 cursor-pointer z-[120]"
+                aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+                aria-expanded={isMobileMenuOpen}
+                aria-controls="mobile-menu"
               >
-                {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                {isMobileMenuOpen ? <X className="w-5 h-5" aria-hidden="true" /> : <Menu className="w-5 h-5" aria-hidden="true" />}
               </button>
             </div>
           </div>
@@ -176,10 +179,14 @@ export function Navbar() {
             onClick={() => setIsMobileMenuOpen(false)}
           />
           <motion.div
+            id="mobile-menu"
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
             className="md:hidden fixed top-0 right-0 h-full w-72 max-w-[85vw] bg-gray-900/95 backdrop-blur-xl border-l border-white/10 z-[90]"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navigation menu"
           >
             <div className="flex flex-col h-full pt-20 px-6">
               <Link 

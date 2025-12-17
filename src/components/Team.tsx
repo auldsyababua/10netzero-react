@@ -48,13 +48,9 @@ export function Team() {
         
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-3 mb-6">
-            <div className="w-3 h-3 bg-primary rounded-full animate-pulse" />
-            <span className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
-              Our Leadership
-            </span>
-            <div className="w-3 h-3 bg-accent-green rounded-full animate-pulse" />
-          </div>
+          <span className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-6 block">
+            Our Leadership
+          </span>
           
           <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-foreground">
             Meet the <span className="text-primary">Team</span>
@@ -77,33 +73,38 @@ export function Team() {
             >
               {/* Photo */}
               <div className="relative h-64 overflow-hidden">
-                <img 
+                <img
                   src={member.image}
                   alt={member.name}
                   className="w-full h-full object-cover group-hover:scale-105 gentle-animation"
+                  width="320"
+                  height="256"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 
                 {/* Social Links */}
                 <div className="absolute bottom-4 right-4 flex gap-2">
                   {member.linkedin && (
-                    <a 
+                    <a
                       href={member.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 gentle-animation"
+                      aria-label={`${member.name} on LinkedIn`}
                     >
-                      <Linkedin className="w-5 h-5" />
+                      <Linkedin className="w-5 h-5" aria-hidden="true" />
                     </a>
                   )}
                   {member.twitter && (
-                    <a 
+                    <a
                       href={member.twitter}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 gentle-animation"
+                      aria-label={`${member.name} on Twitter`}
                     >
-                      <Twitter className="w-5 h-5" />
+                      <Twitter className="w-5 h-5" aria-hidden="true" />
                     </a>
                   )}
                 </div>

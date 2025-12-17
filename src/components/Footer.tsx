@@ -19,7 +19,7 @@ export function Footer() {
           {/* Logo and Description */}
           <div className="md:col-span-5">
             <div className="flex items-center mb-6">
-              <img src={logo} alt="10NetZero" className="h-16 w-auto" />
+              <img src={logo} alt="10NetZero" className="h-16 w-auto" width="160" height="64" loading="lazy" />
             </div>
             <p className="text-gray-400 leading-relaxed mb-6 max-w-md">
               Digital Midstream solutions for Texas operators. We bring the infrastructure to your wellhead so you can turn stranded gas into revenue.
@@ -32,16 +32,18 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary gentle-animation"
+                aria-label="10NetZero on LinkedIn"
               >
-                <Linkedin className="w-5 h-5" />
+                <Linkedin className="w-5 h-5" aria-hidden="true" />
               </a>
               <a
                 href="https://twitter.com/10netzero"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary gentle-animation"
+                aria-label="10NetZero on Twitter"
               >
-                <Twitter className="w-5 h-5" />
+                <Twitter className="w-5 h-5" aria-hidden="true" />
               </a>
             </div>
           </div>
@@ -79,10 +81,10 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 pt-8 mt-12">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="text-sm text-gray-500">
+            <div className="text-sm text-gray-400">
               © {new Date().getFullYear()} 10NetZero. All rights reserved.
             </div>
-            <div className="text-sm text-gray-500">
+            <div className="text-sm text-gray-400">
               Houston, Texas
             </div>
           </div>

@@ -6,6 +6,118 @@ Entries are in reverse chronological order (newest first).
 
 ---
 
+## [2025-12-17 12:03] - Frontend Performance & UX Audit Complete
+
+### What Was Done
+
+**Lighthouse Audit & Performance Fixes:**
+- Ran Lighthouse audit via CLI (browser MCPs required DISPLAY=:1 workaround)
+- Initial scores: Performance 55, Accessibility 87, Best Practices 100, SEO 100
+- Identified throttled mobile simulation as cause of poor FCP/LCP (11s/22s on simulated 3G)
+- Unthrottled desktop performance: **100 score, 0.2s FCP, 1.4s LCP**
+
+**Video Optimization (Major Win):**
+- Analyzed hero video with ffmpeg luminance detection to find flash cycle timing
+- Trimmed 10-second video to 2-second loop (one clean energy flash cycle)
+- **Video size reduced 84%: 4.4MB → 690KB**
+- Removed complex reverse-playback JS logic, replaced with native `loop` attribute
+- Added mobile/slow-connection detection - serves 58KB static WebP image instead of video
+
+**Code Splitting & Bundle Optimization:**
+- Added React.lazy() for route pages (DigitalMidstream, ConsultingDesign, DataCenterOps, Blog, TeamPage)
+- Configured Vite manual chunks for vendor splitting
+- Main bundle reduced from 481KB to 94.5KB
+- TBT reduced from 90ms to 50ms
+
+**Accessibility Improvements (+9 points: 87 → 96):**
+- Added aria-labels to mobile menu button (Navbar.tsx)
+- Added aria-labels to all social media icon links (Team.tsx, Footer.tsx)
+- Added aria-hidden to decorative icons
+- Fixed color contrast: gray-500 → gray-400 in Footer
+
+**UX/Design Fixes:**
+- Removed confusing orange/green pulsing dots from 7 section headers (looked like status indicators but meant nothing)
+- Fixed navbar logo sizing: progressive sizes (h-14/h-16/h-20) with reduced padding (py-1)
+- Added font preloading in index.html with non-blocking pattern
+- Added image width/height attributes to prevent CLS
+- Deleted dead Index.tsx (contained Russian placeholder text)
+
+### What Is Left To Do
+
+#### Remaining Tasks
+- **Commit changes** - All work complete, build passes
+- **Create OG image** - `/og-image.png` referenced but doesn't exist
+- **Create favicon assets** - `/favicon.png`, `/apple-touch-icon.png` referenced but don't exist
+- **Deploy and test** - Real-world mobile performance will differ from Lighthouse simulation
+
+### Context & Decisions
+
+**Video trimming approach:**
+- Used ffmpeg signalstats to detect luminance peaks (flash cycles)
+- Found pattern: 0-0.8s dark intro, then ~1s flash cycles
+- Cut intro, kept one cycle, let browser handle looping natively
+- Removed 60 lines of requestAnimationFrame reverse-playback code
+
+**Mobile optimization approach:**
+- Detect via `window.innerWidth < 768` OR `navigator.connection.saveData/effectiveType`
+- Serve static WebP on mobile/slow connections
+- Video only loads on desktop with good connections
+
+**Section header dots removal:**
+- Orange dot left + green dot right on section labels looked like "live" status indicators
+- No semantic meaning - purely decorative but confusing
+- Kept single pulsing dot on hero badge where it makes sense as "live" indicator
+
+**Lighthouse throttling explanation:**
+- Default Lighthouse simulates slow 3G (1.6 Mbps, 150ms RTT, 4x CPU slowdown)
+- Server response was actually 2ms - network simulation caused 11s FCP
+- Unthrottled test confirmed 100 performance score
+
+### Files Changed
+
+#### Created
+- `public/images/hero-background.webp` - 58KB static image for mobile
+- `.claude/browser-testing.md` - Documentation for browser MCP tools
+
+#### Modified
+- `src/components/Hero.tsx` - Mobile detection, static image fallback, removed reverse-playback
+- `src/components/Navbar.tsx` - Logo sizing, aria-labels, reduced padding
+- `src/components/Team.tsx` - Removed dots, added aria-labels, image lazy loading
+- `src/components/Footer.tsx` - Removed dots, added aria-labels, fixed contrast
+- `src/components/About.tsx` - Removed section header dots
+- `src/components/Services.tsx` - Removed section header dots
+- `src/components/Contact.tsx` - Removed section header dots
+- `src/components/Awards.tsx` - Removed section header dots
+- `src/components/Portfolio.tsx` - Removed section header dots
+- `src/App.tsx` - Added React.lazy() code splitting
+- `vite.config.ts` - Manual chunks configuration
+- `index.html` - Non-blocking font preloading
+- `src/index.css` - Removed duplicate font import
+- `public/videos/hero-background.mp4` - Replaced with 2s trimmed version (was 10s)
+
+#### Deleted
+- `src/pages/Index.tsx` - Dead code with Russian text
+- `public/videos/hero-background-original.mp4` - Backed up then replaced
+
+### Commits
+- None yet (ready to commit)
+
+### Notes for Next Agent
+
+**Critical warnings or context the next agent must know:**
+
+1. **Branch:** Still on `feature/copy-rewrite-economics-focus` - now has copy rewrite + SEO/AEO + performance/a11y fixes
+
+2. **Video original backed up:** Original 10s video saved as `hero-background-original.mp4` if needed
+
+3. **Browser MCP tools:** Require `DISPLAY=:1` prefix on this machine. See `.claude/browser-testing.md`
+
+4. **Lighthouse mobile scores:** Don't panic at 55 performance - that's simulated 3G. Real desktop is 100. Real mobile will be somewhere in between.
+
+5. **Missing assets:** OG image and favicons still need to be created before production deploy
+
+---
+
 ## [2025-12-16 20:30] - SEO/AEO Implementation Complete
 
 ### What Was Done
