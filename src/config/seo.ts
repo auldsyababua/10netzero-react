@@ -27,8 +27,8 @@ export const pagesSEO = {
     path: '/',
   },
   digitalMidstream: {
-    title: 'Digital Midstream Solutions | Flare Gas Recovery | 10NetZero',
-    description: 'Convert flared gas into revenue with our Digital Midstream platform. On-site power generation, Bitcoin mining, and H2S treatment. Zero capital, same-day deployment.',
+    title: 'Digital Midstream™ Solutions | Flare Gas Recovery | 10NetZero',
+    description: 'Convert flared gas into revenue with our Digital Midstream™ platform. On-site power generation and Bitcoin mining. Zero capital, rapid deployment.',
     keywords: ['digital midstream', 'flare gas recovery system', 'digital flare mitigation', 'wellhead bitcoin mining'],
     path: '/digital-midstream',
   },

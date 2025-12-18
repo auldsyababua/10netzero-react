@@ -1,7 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Zap, TrendingUp, Shield, BarChart3, CheckCircle, ArrowRight, ChevronDown } from 'lucide-react'
+import { Zap, TrendingUp, Shield, BarChart3, CheckCircle, ArrowRight, ChevronDown, BookOpen } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
@@ -12,16 +13,16 @@ import { pagesSEO, buildUrl } from '@/config/seo'
 
 const faqItems = [
   {
-    question: "What is Digital Midstream?",
-    answer: "Digital Midstream is 10NetZero's flagship solution that converts stranded natural gas into electricity and digital assets (like Bitcoin) directly at the wellsite. Unlike traditional midstream infrastructure (pipelines), it's modular, mobile, and requires zero capital investment from operators."
+    question: "What is Digital Midstream™?",
+    answer: "Digital Midstream™ is 10NetZero's flagship solution that converts stranded natural gas into electricity and digital assets (like Bitcoin) directly at the wellsite. Unlike traditional midstream infrastructure (pipelines), it's modular, mobile, and requires zero capital investment from operators."
   },
   {
     question: "How much does it cost to get started with 10NetZero?",
     answer: "$0 upfront. 10NetZero handles all infrastructure, equipment, installation, and ongoing operations. Operators simply provide access to their stranded gas and receive a share of the generated revenue."
   },
   {
-    question: "Can 10NetZero handle sour gas with H2S?",
-    answer: "Yes. 10NetZero specializes in treating H2S-contaminated gas that other providers cannot handle. This expands the addressable market to wells that would otherwise have no monetization options."
+    question: "What types of wells can use Digital Midstream™?",
+    answer: "Our solutions work with most stranded gas wells in the Permian Basin. We assess each site individually to determine the optimal approach based on gas volume, location, and infrastructure availability."
   },
   {
     question: "How quickly can equipment be deployed?",
@@ -110,14 +111,14 @@ export default function DigitalMidstream() {
         path={pagesSEO.digitalMidstream.path}
       />
       <ServiceSchema
-        name="Digital Midstream"
+        name="Digital Midstream™"
         description="Convert stranded natural gas into revenue with on-site power generation and Bitcoin mining. Zero capital investment required."
         url={buildUrl(pagesSEO.digitalMidstream.path)}
       />
       <BreadcrumbSchema
         items={[
           { name: 'Home', url: buildUrl('/') },
-          { name: 'Digital Midstream', url: buildUrl(pagesSEO.digitalMidstream.path) },
+          { name: 'Digital Midstream™', url: buildUrl(pagesSEO.digitalMidstream.path) },
         ]}
       />
       <FAQSchema items={faqItems} />
@@ -174,7 +175,7 @@ export default function DigitalMidstream() {
             <ul className="space-y-3 text-foreground">
               <li className="flex items-start gap-3">
                 <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                <span><strong>Digital Midstream</strong> converts stranded natural gas into power and Bitcoin at the wellsite—no pipelines needed.</span>
+                <span><strong>Digital Midstream™</strong> converts stranded natural gas into power and Bitcoin at the wellsite—no pipelines needed.</span>
               </li>
               <li className="flex items-start gap-3">
                 <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
@@ -306,7 +307,7 @@ export default function DigitalMidstream() {
               Frequently Asked Questions
             </h2>
             <p className="text-lg text-muted-foreground">
-              Everything you need to know about Digital Midstream
+              Everything you need to know about Digital Midstream™
             </p>
           </motion.div>
 
@@ -314,6 +315,71 @@ export default function DigitalMidstream() {
             {faqItems.map((item, index) => (
               <FAQItem key={index} question={item.question} answer={item.answer} index={index} />
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Related Articles Section */}
+      <section className="py-20 px-6 sm:px-8 lg:px-12 bg-muted/30">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+              Learn More
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Deep dive into the economics and technology behind Digital Midstream™
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-card border border-border rounded-2xl p-6 hover:border-primary/50 transition-colors"
+            >
+              <BookOpen className="w-8 h-8 text-primary mb-4" />
+              <h3 className="text-lg font-semibold text-foreground mb-2">What Is Digital Midstream™?</h3>
+              <p className="text-muted-foreground text-sm mb-4">A comprehensive visual explainer of how Digital Midstream™ transforms stranded gas into revenue.</p>
+              <Link to="/blog/what-is-digital-midstream" className="inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all">
+                Read article <ArrowRight className="w-4 h-4" />
+              </Link>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="bg-card border border-border rounded-2xl p-6 hover:border-primary/50 transition-colors"
+            >
+              <BookOpen className="w-8 h-8 text-primary mb-4" />
+              <h3 className="text-lg font-semibold text-foreground mb-2">The Economics of Gas-to-Power</h3>
+              <p className="text-muted-foreground text-sm mb-4">Breaking down the financial benefits of converting stranded gas to electricity at the wellsite.</p>
+              <Link to="/blog/economics-gas-to-power-generation" className="inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all">
+                Read article <ArrowRight className="w-4 h-4" />
+              </Link>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="bg-card border border-border rounded-2xl p-6 hover:border-primary/50 transition-colors"
+            >
+              <BookOpen className="w-8 h-8 text-primary mb-4" />
+              <h3 className="text-lg font-semibold text-foreground mb-2">2025 Methane Emission Standards</h3>
+              <p className="text-muted-foreground text-sm mb-4">What Texas operators need to know about upcoming regulatory changes and $1,500/ton methane fees.</p>
+              <Link to="/blog/methane-emission-standards-2025" className="inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all">
+                Read article <ArrowRight className="w-4 h-4" />
+              </Link>
+            </motion.div>
           </div>
         </div>
       </section>

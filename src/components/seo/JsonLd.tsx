@@ -164,4 +164,40 @@ export function BreadcrumbSchema({ items }: BreadcrumbSchemaProps) {
   return <JsonLd data={data} />;
 }
 
+interface ArticleSchemaProps {
+  title: string;
+  description: string;
+  datePublished: string;
+  author: string;
+  url: string;
+  image?: string;
+}
+
+export function ArticleSchema({ title, description, datePublished, author, url, image }: ArticleSchemaProps) {
+  const data: Record<string, unknown> = {
+    '@type': 'Article',
+    headline: title,
+    description,
+    datePublished,
+    author: {
+      '@type': 'Person',
+      name: author,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: '10NetZero',
+      url: 'https://10netzero.com',
+    },
+    url,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': url,
+    },
+  };
+
+  if (image) data.image = image;
+
+  return <JsonLd data={data} />;
+}
+
 export default JsonLd;

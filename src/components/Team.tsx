@@ -18,7 +18,7 @@ export function Team() {
       name: "Joel Fulford",
       role: "CEO",
       bio: "12 years in O&G with deep expertise in operations and business development. Joel brings strategic vision and industry connections to drive 10NetZero's growth.",
-      credentials: ["Mechanical Engineering", "Rice University, MBA"],
+      education: "Memorial University, ME · Rice University, MBA",
       image: joelImage,
       linkedin: "https://www.linkedin.com/in/joel-fulford-5838aa14b/"
     },
@@ -26,7 +26,7 @@ export function Team() {
       name: "Bryan Aulds",
       role: "COO/CFO",
       bio: "11 years in Bitcoin with extensive military and commercial operations experience. Bryan oversees operations and financial strategy.",
-      credentials: ["U.S. Naval Academy", "Rice University, MBA"],
+      education: "U.S. Naval Academy · Rice University, MBA",
       image: bryanImage,
       linkedin: "https://www.linkedin.com/in/s-bryan-aulds-ii-32b955135/",
       twitter: "https://mobile.twitter.com/bryanaulds"
@@ -35,7 +35,7 @@ export function Team() {
       name: "Colin Aulds",
       role: "CTO",
       bio: "11 years in Bitcoin with expertise in hardware and software integration. Colin leads our technology development and implementation.",
-      credentials: ["Belmont University", "Hardware & Software Integration"],
+      education: "Belmont University, BBA",
       image: colinImage,
       linkedin: "https://www.linkedin.com/in/colin-aulds-a7834b103/",
       twitter: "https://twitter.com/colin_aulds"
@@ -111,18 +111,14 @@ export function Team() {
               </div>
               
               {/* Info */}
-              <div className="p-6">
+              <div className="p-6 text-left">
                 <h3 className="font-display text-xl font-bold text-foreground">{member.name}</h3>
                 <p className="text-primary font-semibold mb-3">{member.role}</p>
                 <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{member.bio}</p>
-                
-                <div className="flex flex-wrap gap-2">
-                  {member.credentials.map((credential, idx) => (
-                    <span key={idx} className="text-xs bg-muted px-3 py-1 rounded-full text-muted-foreground">
-                      {credential}
-                    </span>
-                  ))}
-                </div>
+
+                <p className="text-xs text-muted-foreground">
+                  {member.education}
+                </p>
               </div>
             </motion.div>
           ))}

@@ -3,7 +3,8 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Zap, Settings, BarChart3, Shield, CheckCircle } from 'lucide-react'
+import { Zap, Settings, BarChart3, Shield, CheckCircle, ArrowRight, BookOpen } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 export function About() {
   const ref = useRef(null)
@@ -13,13 +14,13 @@ export function About() {
     {
       number: "01",
       title: "Site Assessment",
-      description: "We evaluate gas volume, H2S content, and site access. You get a clear picture of your revenue potential.",
+      description: "We evaluate gas volume, site access, and infrastructure needs. You get a clear picture of your revenue potential.",
       icon: BarChart3
     },
     {
       number: "02",
       title: "Custom Design",
-      description: "We handle the engineering for your specific gas composition—including sour gas treatment if needed.",
+      description: "We engineer the solution for your site—generators, Bitcoin miners, and AI compute hardware sized for your gas volume.",
       icon: Settings
     },
     {
@@ -60,7 +61,7 @@ export function About() {
           </h2>
 
           <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-            You can't build a $10M/mile pipeline for a few wells. We deploy capital and equipment at your site—you provide the gas, we handle the rest, and you get revenue instead of flare permits.
+            You can't build a $10M/mile pipeline for a few wells. We bring generators and computing equipment to your wellhead—your gas powers Bitcoin miners and AI inference servers that generate real revenue. You provide the gas, we handle the rest.
           </p>
         </div>
 
@@ -102,7 +103,7 @@ export function About() {
                 We Deploy the Capital. You Collect the Checks.
               </h3>
               <p className="text-gray-300 text-lg leading-relaxed mb-8">
-                At $10.7M per pipeline mile, you're not building infrastructure for a few wells. We bring the equipment, we run it, we maintain it. You provide the gas and start generating revenue.
+                At $10.7M per pipeline mile, you're not building infrastructure for a few wells. We bring generators and computing hardware to convert your gas into electricity that powers Bitcoin mining and AI workloads. You provide the gas and start generating revenue.
               </p>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -122,7 +123,7 @@ export function About() {
                   <div className="text-5xl font-bold text-primary mb-2">$0</div>
                   <div className="text-gray-400 text-lg">Upfront Investment</div>
                 </div>
-                
+
                 <div className="space-y-4">
                   <div className="flex justify-between items-center py-3 border-t border-gray-700">
                     <span className="text-gray-400">Equipment</span>
@@ -141,7 +142,7 @@ export function About() {
                     <span className="text-accent-green font-semibold">24/7</span>
                   </div>
                 </div>
-                
+
                 <button
                   onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                   className="w-full mt-8 bg-primary text-white font-semibold py-4 rounded-lg hover:bg-primary/90 gentle-animation"
@@ -151,6 +152,18 @@ export function About() {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Learn More Link */}
+        <div className="mt-12 text-center">
+          <Link
+            to="/blog/what-is-digital-midstream"
+            className="inline-flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors group"
+          >
+            <BookOpen className="w-5 h-5" />
+            <span>Read our complete guide: <span className="text-primary font-medium">What Is Digital Midstream™?</span></span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
         </div>
       </div>
     </section>

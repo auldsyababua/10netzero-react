@@ -6,6 +6,183 @@ Entries are in reverse chronological order (newest first).
 
 ---
 
+## [2025-12-17 20:00] - Digital Midstream Explainer Blog Post & Internal Linking
+
+### What Was Done
+
+**Digital Midstream™ Explainer Blog Post:**
+- Created comprehensive 12-minute read explaining the full Digital Midstream™ process
+- Includes 10 detailed image prompts for Claude Desktop to render visual diagrams
+- Image prompts cover: problem/solution overview, economic comparison, site assessment flow, generator infrastructure, compute options (BTC vs AI), revenue flow, site layout, connectivity options, emissions comparison, technology stack
+- Technical details sourced from `/srv/projects/og-ai-inference-research/docs/PRD.md`
+- Added to blogPosts array in Blog.tsx with id=6 and slug `what-is-digital-midstream`
+
+**Internal Linking Implementation:**
+- Added Related Articles section to DigitalMidstream.tsx (links to 3 relevant blog posts)
+- Added Related Articles section to BlogPost.tsx (shows 3 other posts)
+- Added Service Link Banner to BlogPost.tsx (links to Digital Midstream service page)
+- Added "Read our complete guide" link to About.tsx (links to explainer blog post)
+- Fixed Services.tsx href: `/services/data-center-operations` → `/services/data-center-ops`
+
+**SEO Updates:**
+- Added all 6 blog post URLs to sitemap.xml with appropriate priorities
+- New explainer post given priority 0.8 (high value content)
+
+### What Is Left To Do
+
+All tasks from previous session completed. Ready for:
+1. Push to remote when ready
+2. Generate actual images from Claude Desktop prompts (separate workflow)
+3. Deploy to production
+
+### Context & Decisions
+
+**Image prompt approach:**
+- Each prompt is self-contained with explicit style directions
+- All use industrial color palette with orange (#E36414) accents
+- 16:9 aspect ratio for web consistency
+- Designed for Claude Desktop artifact rendering
+
+**Internal linking strategy:**
+- Service pages → related blog posts
+- Blog posts → other posts + main service page
+- About section → flagship explainer content
+- Creates topical clusters for SEO
+
+### Files Changed
+
+#### Created
+- `src/pages/BlogPost.tsx` - Now includes comprehensive Digital Midstream explainer content
+
+#### Modified
+- `src/pages/Blog.tsx` - Added new blog post entry
+- `src/pages/DigitalMidstream.tsx` - Added Related Articles section
+- `src/components/About.tsx` - Added blog link to explainer
+- `src/components/Services.tsx` - Fixed data-center-ops href
+- `public/sitemap.xml` - Added all blog post URLs
+
+### Commits
+- `c71fad6` - Add blog system, Digital Midstream explainer, and internal linking
+
+### Notes for Next Agent
+
+1. **Images not generated yet** - The 10 image prompts in the blog post need to be rendered using Claude Desktop. They're formatted as styled placeholder boxes currently.
+
+2. **Build passes** - All changes compile successfully.
+
+3. **Commit ready to push** - One commit ahead of origin/main.
+
+4. **Blog post structure:**
+   - Metadata in `src/pages/Blog.tsx` blogPosts array
+   - Content JSX in `src/pages/BlogPost.tsx` blogContent object
+   - URL in `public/sitemap.xml`
+
+---
+
+## [2025-12-17 18:30] - Website Copy Refinements, Blog System, Team Page Fix
+
+### What Was Done
+
+**Answered User Questions:**
+- Explained what `ai-facts.json` is (structured data for AI crawlers/LLMs)
+
+**Copy Clarifications (Bitcoin Mining/AI Inference):**
+- Updated About.tsx to explicitly mention "Bitcoin miners and AI inference servers"
+- Updated ai-facts.json canonical description and methodology to clarify monetization through Bitcoin mining ASICs and AI inference GPUs
+- Added clarity about how gas gets monetized: "gas powers Bitcoin miners and AI inference servers that generate real revenue"
+
+**Team Page Fixes:**
+- Changed credentials array to single education string for consistent formatting
+- Format: "University, Degree · University, Degree" (using middot separator)
+- Added `text-left` to info container for proper alignment
+- Joel: "Memorial University, ME · Rice University, MBA"
+- Bryan: "U.S. Naval Academy · Rice University, MBA"
+- Colin: "Belmont University, BBA"
+
+**Blog System Implementation:**
+- Created `src/pages/BlogPost.tsx` - full blog post detail page
+- Added route `/blog/:slug` in App.tsx
+- Added ArticleSchema to JsonLd.tsx for structured article data
+- Wrote content for all 5 existing blog posts:
+  - bitcoin-mining-definitive-guide
+  - stranded-gas-monetization-future
+  - bitcoin-mining-flare-gas-solution
+  - economics-gas-to-power-generation
+  - methane-emission-standards-2025
+- Each post has prose styling, SEO/schema markup, breadcrumbs, CTA section
+
+### What Is Left To Do
+
+#### Remaining Tasks (IN ORDER OF PRIORITY)
+
+1. **Create Digital Midstream explainer blog post with image prompts**
+   - Need to write comprehensive blog post explaining the full Digital Midstream process
+   - Include detailed prompts for Claude Desktop to render graphics/diagrams
+   - Reference `/srv/projects/og-ai-inference-research/docs/PRD.md` for technical details
+
+2. **Create internal linking throughout website**
+   - Link services pages to blog posts
+   - Link blog posts to relevant services
+   - Cross-link related blog posts
+
+3. **Commit all changes**
+   - Build passes
+   - Multiple files modified
+
+### Context & Decisions
+
+**Team education format:**
+- User wanted consistent education display across team members
+- Changed from array of badges to single line of text
+- Used middot (·) separator for clean typography
+
+**Blog content approach:**
+- Each post is self-contained JSX in blogContent object
+- Prose classes handle typography styling
+- All posts emphasize economics-first messaging
+
+**Bitcoin/AI inference clarification:**
+- User specifically wanted to answer "what are you doing with the gas on my land?"
+- Added explicit mentions of Bitcoin mining and AI inference without over-explaining
+
+### Files Changed
+
+#### Created
+- `src/pages/BlogPost.tsx` - Blog post detail page with 5 article contents
+
+#### Modified
+- `src/App.tsx` - Added BlogPost lazy load and /blog/:slug route
+- `src/components/seo/JsonLd.tsx` - Added ArticleSchema
+- `src/components/Team.tsx` - Changed credentials to education string, added text-left
+- `src/components/About.tsx` - Clarified Bitcoin mining/AI inference monetization
+- `public/ai-facts.json` - Updated canonical description and methodology
+
+### Commits
+- None yet (ready to commit)
+
+### Notes for Next Agent
+
+**Critical warnings or context the next agent must know:**
+
+1. **Context window low** - session summarized. All essential context in this devlog entry.
+
+2. **Blog post images needed** - User wants a new blog post explaining Digital Midstream with image prompts for Claude Desktop to render. Check `/srv/projects/og-ai-inference-research/docs/PRD.md` for technical details on generator/GPU setup.
+
+3. **Internal linking not done** - Need to add contextual links between services pages and blog posts.
+
+4. **Build passes** - All changes compile successfully.
+
+5. **Key files for blog work:**
+   - `src/pages/Blog.tsx` - blogPosts array (add new entries here)
+   - `src/pages/BlogPost.tsx` - blogContent object (add article JSX here)
+   - `public/sitemap.xml` - add new blog URLs
+
+6. **Existing todo items:**
+   - Create Digital Midstream explainer blog post with image prompts
+   - Create internal linking throughout website
+
+---
+
 ## [2025-12-17 12:03] - Frontend Performance & UX Audit Complete
 
 ### What Was Done

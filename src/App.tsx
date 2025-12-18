@@ -9,6 +9,7 @@ const DigitalMidstream = lazy(() => import('./pages/DigitalMidstream'))
 const ConsultingDesign = lazy(() => import('./pages/ConsultingDesign'))
 const DataCenterOps = lazy(() => import('./pages/DataCenterOps'))
 const Blog = lazy(() => import('./pages/Blog'))
+const BlogPost = lazy(() => import('./pages/BlogPost'))
 const TeamPage = lazy(() => import('./pages/TeamPage'))
 
 // Loading fallback component
@@ -33,6 +34,7 @@ export default function App() {
           <Route path="/services/consulting-design" element={<ConsultingDesign />} />
           <Route path="/services/data-center-ops" element={<DataCenterOps />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/team" element={<TeamPage />} />
         </Routes>
       </Suspense>

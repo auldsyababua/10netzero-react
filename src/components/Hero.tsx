@@ -67,7 +67,7 @@ export function Hero() {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 rounded-full px-4 py-2 mb-8">
               <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-              <span className="text-primary font-medium text-sm">Digital Midstream Solutions</span>
+              <span className="text-primary font-medium text-sm">Digital Midstream™ Solutions</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-white mb-6">

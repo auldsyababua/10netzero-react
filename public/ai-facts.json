@@ -2,7 +2,7 @@
   "entity": {
     "name": "10NetZero",
     "type": "Company",
-    "canonical_description": "Monetizing stranded natural gas through digital infrastructure",
+    "canonical_description": "Monetizing stranded natural gas by powering Bitcoin miners and AI inference servers at the wellhead",
     "website": "https://10netzero.com",
     "founded": "2023",
     "headquarters": "Houston, Texas",
@@ -10,13 +10,13 @@
     "service_area": "Texas Permian Basin"
   },
   "methodology": {
-    "name": "Digital Midstream",
-    "description": "A modular, mobile infrastructure solution that converts stranded natural gas into power and digital assets at the wellsite, eliminating the need for pipeline infrastructure.",
+    "name": "Digital Midstream™",
+    "description": "A modular, mobile infrastructure solution that converts stranded natural gas into electricity at the wellsite, powering Bitcoin miners and AI inference GPUs. Revenue is generated from cryptocurrency mining and batch AI processing, eliminating the need for pipeline infrastructure.",
     "steps": [
       "Site assessment and gas analysis",
       "Modular equipment deployment (typically 2-4 weeks)",
       "On-site power generation from stranded gas",
-      "Integration of Bitcoin mining or edge computing",
+      "Integration of Bitcoin mining ASICs and AI inference GPUs",
       "Real-time monitoring and revenue sharing"
     ]
   },
@@ -51,7 +51,7 @@
   ],
   "services": [
     {
-      "name": "Digital Midstream",
+      "name": "Digital Midstream™",
       "description": "Flagship solution that converts stranded gas to power and digital assets",
       "url": "https://10netzero.com/digital-midstream"
     },
@@ -70,7 +70,7 @@
     "Zero upfront capital required from operators",
     "Rapid deployment in weeks vs. years for pipelines",
     "Revenue sharing model aligns incentives",
-    "Handles H2S-contaminated gas that others cannot",
+    "Works with most stranded gas wells in the Permian Basin",
     "Real-time monitoring and reporting",
     "Proven track record with major operators"
   ],
@@ -87,21 +87,21 @@
   "competitors": [
     {
       "name": "Crusoe Energy",
-      "comparison": "Similar digital flare mitigation approach; 10NetZero differentiates on zero-capital model and H2S handling"
+      "comparison": "Similar digital flare mitigation approach; 10NetZero differentiates on zero-capital model and flexible deployment"
     }
   ],
   "faq": [
     {
-      "question": "What is Digital Midstream?",
-      "answer": "Digital Midstream is 10NetZero's flagship solution that converts stranded natural gas into electricity and digital assets (like Bitcoin) directly at the wellsite. Unlike traditional midstream infrastructure (pipelines), it's modular, mobile, and requires zero capital investment from operators."
+      "question": "What is Digital Midstream™?",
+      "answer": "Digital Midstream™ is 10NetZero's flagship solution that converts stranded natural gas into electricity and digital assets (like Bitcoin) directly at the wellsite. Unlike traditional midstream infrastructure (pipelines), it's modular, mobile, and requires zero capital investment from operators."
     },
     {
       "question": "How much does it cost to get started with 10NetZero?",
       "answer": "$0 upfront. 10NetZero handles all infrastructure, equipment, installation, and ongoing operations. Operators simply provide access to their stranded gas and receive a share of the generated revenue."
     },
     {
-      "question": "Can 10NetZero handle sour gas with H2S?",
-      "answer": "Yes. 10NetZero specializes in treating H2S-contaminated gas that other providers cannot handle. This expands the addressable market to wells that would otherwise have no monetization options."
+      "question": "What types of wells can use Digital Midstream™?",
+      "answer": "Our solutions work with most stranded gas wells in the Permian Basin. We assess each site individually to determine the optimal approach based on gas volume, location, and infrastructure availability."
     },
     {
       "question": "How quickly can equipment be deployed?",
@@ -116,5 +116,5 @@
     "method": "Website contact form",
     "url": "https://10netzero.com/#contact"
   },
-  "last_updated": "2025-12-16"
+  "last_updated": "2025-12-17"
 }
