@@ -1,0 +1,83 @@
+---
+date: "2025-12-18"
+time: "16:04"
+title: "Digital Midstream Explainer Blog Post & Internal Linking"
+commits:
+  - hash: "fe80106"
+    message: "Add blog system, Digital Midstream explainer, and internal linking"
+content: |
+  ### What Was Done
+
+  **Digital Midstream™ Explainer Blog Post:**
+  - Created comprehensive 12-minute read explaining the full Digital Midstream™ process
+  - Includes 10 detailed image prompts for Claude Desktop to render visual diagrams:
+    1. Hero Diagram - Problem/Solution overview
+    2. Economic Comparison - Traditional vs Digital Midstream
+    3. Site Assessment Process Flow
+    4. Generator Infrastructure Detail
+    5. Compute Options - Bitcoin Mining vs AI Inference
+    6. Revenue Flow Diagram (Sankey-style)
+    7. Complete Site Layout - Aerial/Plan View
+    8. Data Connectivity Options
+    9. Emissions Reduction Comparison
+    10. Technology Stack Diagram
+  - Technical specs sourced from `/srv/projects/og-ai-inference-research/docs/PRD.md`
+  - Added to blogPosts array with id=6, slug `what-is-digital-midstream`
+
+  **Internal Linking Implementation:**
+  - Added Related Articles section to DigitalMidstream.tsx (links to 3 relevant blog posts)
+  - Added Related Articles section to BlogPost.tsx (shows 3 other posts dynamically)
+  - Added Service Link Banner to BlogPost.tsx (links to Digital Midstream service page)
+  - Added "Read our complete guide" link to About.tsx (links to explainer blog post)
+  - Fixed Services.tsx href: `/services/data-center-operations` → `/services/data-center-ops`
+
+  **SEO Updates:**
+  - Added all 6 blog post URLs to sitemap.xml with appropriate priorities
+  - New explainer post given priority 0.8 (high value content)
+
+  ### Files Changed
+
+  #### Created
+  - `src/pages/BlogPost.tsx` - Blog post detail page with 6 article contents and image prompts
+
+  #### Modified
+  - `src/pages/Blog.tsx` - Added new blog post entry (id=6)
+  - `src/pages/DigitalMidstream.tsx` - Added Related Articles section with 3 blog links
+  - `src/components/About.tsx` - Added "Read our complete guide" blog link
+  - `src/components/Services.tsx` - Fixed data-center-ops href
+  - `public/sitemap.xml` - Added all 6 blog post URLs
+
+  ### Context & Decisions
+
+  **Image prompt approach:**
+  - Each prompt is self-contained with explicit style directions
+  - All use industrial color palette with orange (#E36414) accents
+  - 16:9 aspect ratio for web consistency
+  - Designed for Claude Desktop artifact rendering
+
+  **Internal linking strategy:**
+  - Service pages → related blog posts
+  - Blog posts → other posts + main service page
+  - About section → flagship explainer content
+  - Creates topical clusters for SEO
+
+  ### Unfinished Work
+
+  - [ ] Generate actual images from the 10 Claude Desktop prompts
+  - [ ] Replace placeholder image boxes with rendered graphics
+  - [ ] Consider adding images to other blog posts
+
+  ### Notes for Next Agent
+
+  1. **Images not generated yet** - The 10 image prompts in the blog post are styled placeholder boxes. Copy the prompts to Claude Desktop to generate the actual graphics.
+
+  2. **Build passes** - All changes compile successfully.
+
+  3. **Already pushed** - Commit fe80106 is on origin/main.
+
+  4. **Blog post structure:**
+     - Metadata in `src/pages/Blog.tsx` blogPosts array
+     - Content JSX in `src/pages/BlogPost.tsx` blogContent object
+     - URL in `public/sitemap.xml`
+
+  5. **Legacy devlog exists** - `docs/DEVLOG.md` contains previous session history. Migration script had syntax issues. Consider manual migration or keeping both formats.
